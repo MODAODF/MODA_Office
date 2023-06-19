@@ -1,0 +1,12 @@
+[submodule "dictionaries"]
+	path = dictionaries
+	url = https://gerrit.libreoffice.org/dictionaries
+	branch = libreoffice-7-5-0
+[submodule "helpcontent2"]
+	path = helpcontent2
+	url = https://gerrit.libreoffice.org/help
+	branch = libreoffice-7-5-0
+[submodule "translations"]
+	path = translations
+	url = https://github.com/MODAODF/translations
+	branch = 7.5
