@@ -296,6 +296,10 @@ sub create_package
             # tarball.tar.bz2 and finally the Language Pack.app is assembled in $appfolder
             $localtempdir = "$tempdir/$packagename";
             my $srcfolder = $localtempdir . "/" . $volume_name_classic_app . "\.app";
+            if ($volume_name_classic_app eq 'MODA ODF Application Tools')
+            {
+                $srcfolder = "$localtempdir/MODAODFApplicationTools.app";
+            }
 
             $volume_name             .= " " . $$languagestringref . " Language Pack";
             $volume_name_classic     .= " Language Pack";
