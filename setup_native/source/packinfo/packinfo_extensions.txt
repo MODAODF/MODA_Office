@@ -108,3 +108,123 @@ description = "Script provider for JavaScript extension for %PRODUCTNAME %PRODUC
 destpath = "/opt"
 packageversion = "%PACKAGEVERSION"
 End
+
+Start
+module = "gid_Module_Optional_Extensions_ONEKEY2ODF"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-onekey2odf"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-onekey2odf"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "ONEKEY2ODF extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_HYPERLINK"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-hyperlink"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-hyperlink"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "HYPERLINK extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_ODFHELP"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-odfhelp"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-odfhelp"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "ODFHelp for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_CPMLIBRE"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-cpmlibre"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-cpmlibre"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "CPMLIBRE extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_VRTNETWORKEQUIPMENT"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-vrtnetworkequipment"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-vrtnetworkequipment"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "VRTNETWORKEQUIPMENT extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_FORMATCHECK"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-formatcheck"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-formatcheck"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "FORMATCHECK extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_SUBSCRIPTION"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-subscription"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-subscription"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "SUBSCRIPTION extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_TEMPLATEREPO"
+solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-templaterepo"
+solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-templaterepo"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "TEMPLATEREPO extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End

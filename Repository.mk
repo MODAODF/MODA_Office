@@ -836,6 +836,54 @@ $(eval $(call gb_Helper_register_packages_for_install,extensions_numbertext,\
 ))
 endif
 
+ifeq ($(CPMLIBRE_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_CPMLIBRE,\
+	cpmlibre \
+))
+endif
+
+ifeq ($(HYPERLINK_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_HYPERLINK,\
+	hyperlink \
+))
+endif
+
+ifeq ($(ONEKEY2ODF_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_ONEKEY2ODF,\
+	onekey2odf \
+))
+endif
+
+ifeq ($(ODFHELP_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_ODFHELP,\
+	odfhelp \
+))
+endif
+
+ifeq ($(VRTNETWORKEQUIPMENT_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_VRTNETWORKEQUIPMENT,\
+	vrtnetworkequipment \
+))
+endif
+
+ifeq ($(FORMATCHECK_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_FORMATCHECK,\
+	formatcheck \
+))
+endif
+
+ifeq ($(SUBSCRIPTION_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_SUBSCRIPTION,\
+	subscription \
+))
+endif
+
+ifeq ($(TEMPLATEREPO_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_TEMPLATEREPO,\
+	templaterepo \
+))
+endif
+
 $(eval $(call gb_Helper_register_jars,OXT, \
 	EvolutionarySolver \
 	active_java \

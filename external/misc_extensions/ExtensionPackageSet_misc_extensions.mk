@@ -13,4 +13,32 @@ ifneq ($(NUMBERTEXT_EXTENSION_PACK),)
 $(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,numbertext,$(NUMBERTEXT_EXTENSION_PACK)))
 endif
 
+ifeq ($(CPMLIBRE_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,cpmlibre,$(CPMLIBRE_OXT_MICRO).oxt))
+endif
+
+ifeq ($(HYPERLINK_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,hyperlink,$(HYPERLINK_OXT_MICRO).oxt))
+endif
+
+ifeq ($(ONEKEY2ODF_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,onekey2odf,$(ONEKEY2ODF_OXT_MICRO).oxt))
+endif
+
+ifeq ($(ODFHELP_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,ODFHelp,$(ODFHELP_OXT_MICRO).oxt))
+endif
+
+ifeq ($(VRTNETWORKEQUIPMENT_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,VrtNetworkEquipment,$(VRTNETWORKEQUIPMENT_OXT_TARBALL)))
+endif
+
+ifeq ($(FORMATCHECK_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,FormatCheck,$(FORMATCHECK_OXT_MICRO).oxt))
+endif
+
+ifeq ($(SUBSCRIPTION_EXTENSION_PACK),yes)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,Subscription,$(SUBSCRIPTION_OXT_MICRO).oxt))
+endif
+
 # vim: set noet sw=4 ts=4:
