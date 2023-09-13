@@ -224,6 +224,33 @@ $(WORKDIR)/download: $(BUILDDIR)/config_$(gb_Side).mk $(SRCDIR)/download.lst $(S
 		$(call fetch_Optional,ODFVALIDATOR,ODFVALIDATOR_JAR) \
 		$(call fetch_Optional,OFFICEOTRON,OFFICEOTRON_JAR) \
 	,$(call fetch_Download_item,https://dev-www.libreoffice.org/extern,$(item)))
+	$(foreach item, \
+		SUBSCRIPTION_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/Subscription/releases/download/$(SUBSCRIPTION_OXT_MICRO),$(item)))
+	$(foreach item, \
+		CPMLIBRE_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/cpmlibre/releases/download/$(CPMLIBRE_OXT_MICRO),$(item)))
+	$(foreach item, \
+		ODFHELP_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/ODFHelp/releases/download/$(ODFHELP_OXT_MICRO),$(item)))
+	$(foreach item, \
+		FORMATCHECK_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/FormatCheck/releases/download/$(FORMATCHECK_OXT_MICRO),$(item)))
+	$(foreach item, \
+		HYPERLINK_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/hyperlink/releases/download/$(HYPERLINK_OXT_MICRO),$(item)))
+	$(foreach item, \
+		ONEKEY2ODF_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/Onekey2ODF/releases/download/$(ONEKEY2ODF_OXT_MICRO),$(item)))
+	$(foreach item, \
+		TEMPLATEREPO_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/TemplateRepo/releases/download/$(TEMPLATEREPO_OXT_MICRO),$(item)))
+	$(foreach item, \
+		QRCODEPRINT_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/QRcodePrint/releases/download/$(QRCODEPRINT_OXT_MICRO),$(item)))
+	$(foreach item, \
+		VRTNETWORKEQUIPMENT_OXT_TARBALL \
+	,$(call fetch_Download_item,https://extensions.libreoffice.org/assets/downloads/z,$(item)))
 	@mkdir -p $(dir $@) && touch $@
 	@mkdir -p $(dir $@)/Executable
 
