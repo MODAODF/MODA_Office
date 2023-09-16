@@ -13352,18 +13352,89 @@ dnl There are standalone tests for each of these below.
 WITH_EXTRA_EXTENSIONS=
 AC_SUBST([WITH_EXTRA_EXTENSIONS])
 
-AC_SUBST(CPMLIBRE_EXTENSION_PACK, "yes")
-AC_SUBST(HYPERLINK_EXTENSION_PACK, "yes")
-AC_SUBST(ONEKEY2ODF_EXTENSION_PACK, "yes")
-AC_SUBST(ODFHELP_EXTENSION_PACK, "yes")
-AC_SUBST(VRTNETWORKEQUIPMENT_EXTENSION_PACK, "yes")
-AC_SUBST(FORMATCHECK_EXTENSION_PACK, "yes")
-AC_SUBST(SUBSCRIPTION_EXTENSION_PACK, "yes")
+libo_CHECK_EXTENSION([ConvertTextToNumber],[CT2N],[ct2n],[ct2n],[])
+libo_CHECK_EXTENSION([CpmLibre],[CPMLIBRE],[cpmlibre],[cpmlibre],[])
+libo_CHECK_EXTENSION([HyperLink],[HYPERLINK],[hyperlink],[hyperlink],[])
+libo_CHECK_EXTENSION([Onekey2ODF],[ONEKEY2ODF],[onekey2odf],[onekey2odf],[])
+libo_CHECK_EXTENSION([ODFHelp],[ODFHELP],[odfhelp],[odfhelp],[])
+libo_CHECK_EXTENSION([VrtNetworkEquipment],[VRTNETWORKEQUIPMENT],[vrtnetworkequipment],[vrtnetworkequipment],[])
+libo_CHECK_EXTENSION([FormatCheck],[FORMATCHECK],[formatcheck],[formatcheck],[])
+libo_CHECK_EXTENSION([Subscription],[SUBSCRIPTION],[subscription],[subscription],[])
 
 libo_CHECK_EXTENSION([Numbertext],[NUMBERTEXT],[numbertext],[numbertext],[b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt])
 if test "x$with_java" != "xno"; then
     libo_CHECK_EXTENSION([NLPSolver],[NLPSOLVER],[nlpsolver],[nlpsolver],[])
 fi
+
+# Check whether --enable-ext-cpmlibre was given.
+# AC_MSG_CHECKING([for cpmlibre])
+if test -z "${enable_ext_cpmlibre+set}"; then :
+    CPMLIBRE_EXTENSION_PACK=no
+else
+    CPMLIBRE_EXTENSION_PACK=yes
+fi
+$as_echo "CPMLIBRE_EXTENSION_PACK = $CPMLIBRE_EXTENSION_PACK"
+AC_SUBST(CPMLIBRE_EXTENSION_PACK)
+
+# Check whether --enable-ext-hyperlink was given.
+# AC_MSG_CHECKING([for hyperlink])
+if test -z "${enable_ext_hyperlink+set}"; then :
+    HYPERLINK_EXTENSION_PACK=no
+else
+    HYPERLINK_EXTENSION_PACK=yes
+fi
+$as_echo "HYPERLINK_EXTENSION_PACK = $HYPERLINK_EXTENSION_PACK"
+AC_SUBST(HYPERLINK_EXTENSION_PACK)
+
+# Check whether --enable-ext-onekey2odf was given.
+# AC_MSG_CHECKING([for onekey2odf])
+if test -z "${enable_ext_onekey2odf+set}"; then :
+    ONEKEY2ODF_EXTENSION_PACK=no
+else
+    ONEKEY2ODF_EXTENSION_PACK=yes
+fi
+$as_echo "ONEKEY2ODF_EXTENSION_PACK = $ONEKEY2ODF_EXTENSION_PACK"
+AC_SUBST(ONEKEY2ODF_EXTENSION_PACK)
+
+# Check whether --enable-ext-odfhelp was given.
+# AC_MSG_CHECKING([for odfhelp])
+if test -z "${enable_ext_odfhelp+set}"; then :
+    ODFHELP_EXTENSION_PACK=no
+else
+    ODFHELP_EXTENSION_PACK=yes
+fi
+$as_echo "ODFHELP_EXTENSION_PACK = $ODFHELP_EXTENSION_PACK"
+AC_SUBST(ODFHELP_EXTENSION_PACK)
+
+# Check whether --enable-ext-vrtnetworkequipment was given.
+# AC_MSG_CHECKING([for vrtnetworkequipment])
+if test -z "${enable_ext_vrtnetworkequipment+set}"; then :
+    VRTNETWORKEQUIPMENT_EXTENSION_PACK=no
+else
+    VRTNETWORKEQUIPMENT_EXTENSION_PACK=yes
+fi
+$as_echo "VRTNETWORKEQUIPMENT_EXTENSION_PACK = $VRTNETWORKEQUIPMENT_EXTENSION_PACK"
+AC_SUBST(VRTNETWORKEQUIPMENT_EXTENSION_PACK)
+
+# Check whether --enable-ext-formatcheck was given.
+# AC_MSG_CHECKING([for formatcheck])
+if test -z "${enable_ext_formatcheck+set}"; then :
+    FORMATCHECK_EXTENSION_PACK=no
+else
+    FORMATCHECK_EXTENSION_PACK=yes
+fi
+$as_echo "FORMATCHECK_EXTENSION_PACK = $FORMATCHECK_EXTENSION_PACK"
+AC_SUBST(FORMATCHECK_EXTENSION_PACK)
+
+# Check whether --enable-ext-subscription was given.
+# AC_MSG_CHECKING([for subscription])
+if test -z "${enable_ext_subscription+set}"; then :
+    SUBSCRIPTION_EXTENSION_PACK=no
+else
+    SUBSCRIPTION_EXTENSION_PACK=yes
+fi
+$as_echo "SUBSCRIPTION_EXTENSION_PACK = $SUBSCRIPTION_EXTENSION_PACK"
+AC_SUBST(SUBSCRIPTION_EXTENSION_PACK)
 
 AC_MSG_CHECKING([whether to build opens___.ttf])
 if test "$enable_build_opensymbol" = "yes"; then
