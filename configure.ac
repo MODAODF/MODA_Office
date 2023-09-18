@@ -13352,14 +13352,14 @@ dnl There are standalone tests for each of these below.
 WITH_EXTRA_EXTENSIONS=
 AC_SUBST([WITH_EXTRA_EXTENSIONS])
 
-libo_CHECK_EXTENSION([ConvertTextToNumber],[CT2N],[ct2n],[ct2n],[])
-libo_CHECK_EXTENSION([CpmLibre],[CPMLIBRE],[cpmlibre],[cpmlibre],[])
-libo_CHECK_EXTENSION([HyperLink],[HYPERLINK],[hyperlink],[hyperlink],[])
-libo_CHECK_EXTENSION([Onekey2ODF],[ONEKEY2ODF],[onekey2odf],[onekey2odf],[])
-libo_CHECK_EXTENSION([ODFHelp],[ODFHELP],[odfhelp],[odfhelp],[])
-libo_CHECK_EXTENSION([VrtNetworkEquipment],[VRTNETWORKEQUIPMENT],[vrtnetworkequipment],[vrtnetworkequipment],[])
-libo_CHECK_EXTENSION([FormatCheck],[FORMATCHECK],[formatcheck],[formatcheck],[])
-libo_CHECK_EXTENSION([Subscription],[SUBSCRIPTION],[subscription],[subscription],[])
+moda_CHECK_EXTENSION([ConvertTextToNumber],[CT2N],[ct2n],[ct2n],[])
+moda_CHECK_EXTENSION([CpmLibre],[CPMLIBRE],[cpmlibre],[cpmlibre],[])
+moda_CHECK_EXTENSION([HyperLink],[HYPERLINK],[hyperlink],[hyperlink],[])
+moda_CHECK_EXTENSION([Onekey2ODF],[ONEKEY2ODF],[onekey2odf],[onekey2odf],[])
+moda_CHECK_EXTENSION([ODFHelp],[ODFHELP],[odfhelp],[odfhelp],[])
+moda_CHECK_EXTENSION([VrtNetworkEquipment],[VRTNETWORKEQUIPMENT],[vrtnetworkequipment],[vrtnetworkequipment],[])
+moda_CHECK_EXTENSION([FormatCheck],[FORMATCHECK],[formatcheck],[formatcheck],[])
+moda_CHECK_EXTENSION([Subscription],[SUBSCRIPTION],[subscription],[subscription],[])
 
 libo_CHECK_EXTENSION([Numbertext],[NUMBERTEXT],[numbertext],[numbertext],[b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt])
 if test "x$with_java" != "xno"; then
