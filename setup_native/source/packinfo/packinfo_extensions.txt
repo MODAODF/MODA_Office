@@ -111,9 +111,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_ONEKEY2ODF"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-onekey2odf"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-onekey2odf"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-onekey2odf"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-onekey2odf"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -126,9 +126,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_HYPERLINK"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-hyperlink"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-hyperlink"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-hyperlink"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-hyperlink"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -141,9 +141,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_ODFHELP"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-odfhelp"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-odfhelp"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-odfhelp"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-odfhelp"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -156,9 +156,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_CPMLIBRE"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-cpmlibre"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-cpmlibre"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-cpmlibre"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-cpmlibre"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -171,9 +171,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_VRTNETWORKEQUIPMENT"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-vrtnetworkequipment"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-vrtnetworkequipment"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-vrtnetworkequipment"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-vrtnetworkequipment"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -186,9 +186,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_FORMATCHECK"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-formatcheck"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-formatcheck"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-formatcheck"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-formatcheck"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -201,9 +201,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_SUBSCRIPTION"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-subscription"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-subscription"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-subscription"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-subscription"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
@@ -216,9 +216,9 @@ End
 
 Start
 module = "gid_Module_Optional_Extensions_TEMPLATEREPO"
-solarispackagename = "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-extension-templaterepo"
-solarisrequires =  "%BASISPACKAGEPREFIX%WITHOUTDOTPRODUCTVERSION-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX%PRODUCTVERSION-extension-templaterepo"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-templaterepo"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-templaterepo"
 requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
 linuxpatchrequires = ""
 copyright = "OSSII"
