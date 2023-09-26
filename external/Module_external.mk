@@ -73,6 +73,7 @@ $(eval $(call gb_Module_add_moduledirs,external,\
 	$(call gb_Helper_optional,MDDS,mdds) \
 	$(call gb_Helper_optional,MDNSRESPONDER,mdnsresponder) \
 	$(if $(WITH_EXTRA_EXTENSIONS),misc_extensions) \
+	$(if $(WITH_MODA_EXTRA_EXTENSIONS),misc_extensions) \
 	$(call gb_Helper_optional,MORE_FONTS,more_fonts) \
 	$(call gb_Helper_optional,MSPUB,libmspub) \
 	$(call gb_Helper_optional,MWAW,libmwaw) \
