@@ -544,7 +544,6 @@ IMPL_LINK(BackingWindow, ExtLinkClickHdl, weld::Button&, rButton, void)
             Any value(xNameAccess->getByName(aNode));
 
             sURL = value.get<OUString>();
-            localizeWebserviceURI(sURL);
 
             Reference<css::system::XSystemShellExecute> const
                 xSystemShellExecute(
