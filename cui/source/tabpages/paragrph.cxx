@@ -32,6 +32,7 @@
 #include <svx/strings.hrc>
 #include <svx/dialmgr.hxx>
 #include <paragrph.hxx>
+#include <editeng/editids.hrc>
 #include <editeng/frmdiritem.hxx>
 #include <editeng/lspcitem.hxx>
 #include <editeng/adjustitem.hxx>
@@ -1015,6 +1016,14 @@ SvxParaAlignTabPage::SvxParaAlignTabPage(weld::Container* pPage, weld::DialogCon
     , m_xVertAlignSdr(m_xBuilder->weld_label("labelST_VERTALIGN_SDR"))
     , m_xTextDirectionLB(new svx::FrameDirectionListBox(m_xBuilder->weld_combo_box("comboLB_TEXTDIRECTION")))
 {
+    if (!rSet.HasItem(SID_ATTR_TABSTOP_DEFAULTS) && !rSet.HasItem(SID_ATTR_TABSTOP_POS))
+    {
+        m_xLastLineFT->hide();
+        m_xLastLineLB->hide();
+        m_xExpandCB->hide();
+        m_xSnapToGridCB->hide();
+    }
+
     SetExchangeSupport();
 
     sal_uInt16 nLastLinePos = LASTLINEPOS_DEFAULT;
