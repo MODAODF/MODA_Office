@@ -166,8 +166,11 @@ XMLTextListBlockContext::XMLTextListBlockContext(
             }
             if ( msListId.isEmpty() )
             {
-                // generate a new list id for the list
-                msListId = rTextListsHelper.GenerateNewListId();
+                if (!rImport.IsMSO())
+                {
+                        // generate a new list id for the list
+                        msListId = rTextListsHelper.GenerateNewListId();
+                }
             }
         }
 
