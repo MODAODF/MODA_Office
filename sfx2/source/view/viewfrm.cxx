@@ -1289,6 +1289,74 @@ void SfxViewFrame::AppendReadOnlyInfobar()
     }
 }
 
+bool FormatCheckEvent()
+{
+    SfxObjectShell* pShell = SfxObjectShell::Current();
+    OUString sUrl = "vnd.sun.Star.script:FormatCheck.FormatCheck.FormatCheckEvent?language=Basic&location=application";
+    // Set up parameters
+    uno::Sequence< css::uno::Any > aArgs;
+    uno::Any aRet;
+    uno::Sequence< sal_Int16 > aOutArgsIndex;
+    uno::Sequence< uno::Any > aOutArgs;
+    ErrCode eRet = pShell->CallXScript(sUrl, aArgs, aRet, aOutArgsIndex, aOutArgs, false);
+
+    bool bReturn = true;
+    aRet >>= bReturn;
+
+    return bReturn;
+}
+
+bool menuAction()
+{
+    SfxObjectShell* pShell = SfxObjectShell::Current();
+    OUString sUrl = "vnd.sun.Star.script:FormatCheck.FormatCheck.menuAction?language=Basic&location=application";
+    // Set up parameters
+    uno::Sequence< css::uno::Any > aArgs;
+    uno::Any aRet;
+    uno::Sequence< sal_Int16 > aOutArgsIndex;
+    uno::Sequence< uno::Any > aOutArgs;
+    ErrCode eRet = pShell->CallXScript(sUrl, aArgs, aRet, aOutArgsIndex, aOutArgs, false);
+
+    bool bReturn = true;
+    aRet >>= bReturn;
+
+    return bReturn;
+}
+
+bool EnabledFormatCheck()
+{
+    SfxObjectShell* pShell = SfxObjectShell::Current();
+    OUString sUrl = "vnd.sun.Star.script:FormatCheck.FormatCheck._EnabledFormatCheck?language=Basic&location=application";
+    // Set up parameters
+    uno::Sequence< css::uno::Any > aArgs;
+    uno::Any aRet;
+    uno::Sequence< sal_Int16 > aOutArgsIndex;
+    uno::Sequence< uno::Any > aOutArgs;
+    ErrCode eRet = pShell->CallXScript(sUrl, aArgs, aRet, aOutArgsIndex, aOutArgs, false);
+
+    bool bReturn = false;
+    aRet >>= bReturn;
+
+    return bReturn;
+}
+
+bool IsRunFormatCheckInfobar()
+{
+    SfxObjectShell* pShell = SfxObjectShell::Current();
+    OUString sUrl = "vnd.sun.Star.script:FormatCheck.FormatCheck._IsRunFormatCheckInfobar?language=Basic&location=application";
+    // Set up parameters
+    uno::Sequence< css::uno::Any > aArgs;
+    uno::Any aRet;
+    uno::Sequence< sal_Int16 > aOutArgsIndex;
+    uno::Sequence< uno::Any > aOutArgs;
+    ErrCode eRet = pShell->CallXScript(sUrl, aArgs, aRet, aOutArgsIndex, aOutArgs, false);
+
+    bool bReturn = false;
+    aRet >>= bReturn;
+
+    return bReturn;
+}
+
 void SfxViewFrame::AppendContainsMacrosInfobar()
 {
     auto pInfoBar = AppendInfoBar("macro", SfxResId(RID_SECURITY_WARNING_TITLE), SfxResId(STR_CONTAINS_MACROS), InfobarType::WARNING);
@@ -1736,6 +1804,18 @@ IMPL_LINK(SfxViewFrame, SwitchReadOnlyHandler, weld::Button&, rButton, void)
 IMPL_LINK_NOARG(SfxViewFrame, SignDocumentHandler, weld::Button&, void)
 {
     GetDispatcher()->Execute(SID_SIGNATURE);
+}
+
+IMPL_LINK_NOARG(SfxViewFrame, FormatCheckApplyHandler, weld::Button&, void)
+{
+    menuAction();
+    RemoveInfoBar(OUString("tipformatcheck"));
+}
+
+IMPL_LINK_NOARG(SfxViewFrame, FormatCheckDisabledHandler, weld::Button&, void)
+{
+    FormatCheckEvent();
+    RemoveInfoBar(OUString("tipformatcheck"));
 }
 
 IMPL_LINK(SfxViewFrame, HiddenTrackChangesHandler, weld::Button&, rButton, void)

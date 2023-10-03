@@ -343,6 +343,10 @@
 
 #define STR_STYLEUSEDBY                         NC_("STR_STYLEUSEDBY", "(used by: %STYLELIST)")
 
+#define STR_TIP_FORMATCHECK                     NC_("STR_TIP_FORMATCHECK", "The file you opened is an Office file or an ODF file not made with native ODF software. It is recommended to save it with this tool. During the process, we will automatically make the following layout adjustments (if you don’t need it, you can uncheck it yourself)")
+#define STR_TIP_FORMATCHECK_APPLY               NC_("STR_TIP_FORMATCHECK_APPLY", "FormatCheck Options")
+#define STR_TIP_FORMATCHECK_DISABLE             NC_("STR_TIP_FORMATCHECK_DISABLE", "Disable FormatCheck")
+
 #define STR_DOCUMENT                            NC_("STR_DOCUMENT", "Document")
 #define STR_SPREADSHEET                         NC_("STR_SPREADSHEET", "Spreadsheet")
 #define STR_PRESENTATION                        NC_("STR_PRESENTATION", "Presentation")
