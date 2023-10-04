@@ -54,6 +54,8 @@ Module gid_Module_Root
              gid_File_Extra_Galltransport,
              gid_File_Extra_Galltxtshapes,
              gid_File_Extra_Gallsounds,
+             gid_File_Extra_Tplodf,
+             gid_File_Extra_Tplgovodftool,
              gid_File_Basic_Form,
              gid_File_Share_Config_Sofficecfg_uiconfig_basicide,
              gid_File_Share_Config_Sofficecfg_uiconfig_cui,

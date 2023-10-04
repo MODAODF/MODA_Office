@@ -35,6 +35,8 @@ $(eval $(call gb_Module_add_targets,extras,\
 	$(if $(filter WNT,$(OS)),Package_newfiles) \
 	Package_palettes \
 	Package_tplwizdesktop \
+	Package_tplodf \
+	Package_tplgovodftool \
 	Package_wordbook \
 ))
 

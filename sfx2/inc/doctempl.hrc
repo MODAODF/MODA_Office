@@ -29,6 +29,8 @@ const TranslateId TEMPLATE_LONG_NAMES_ARY[] =
     NC_("TEMPLATE_LONG_NAMES_ARY", "My Templates"),
     NC_("TEMPLATE_LONG_NAMES_ARY", "Styles"),
     NC_("TEMPLATE_LONG_NAMES_ARY", "Business Correspondence"),
+    NC_("TEMPLATE_LONG_NAMES_ARY", "govodftool"),
+    NC_("TEMPLATE_LONG_NAMES_ARY", "odftemplate"),
     NC_("TEMPLATE_LONG_NAMES_ARY", "Other Business Documents"),
     NC_("TEMPLATE_LONG_NAMES_ARY", "Personal Correspondence and Documents"),
     NC_("TEMPLATE_LONG_NAMES_ARY", "Presentations"),

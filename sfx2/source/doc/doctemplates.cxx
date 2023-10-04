@@ -485,6 +485,8 @@ const char* TEMPLATE_SHORT_NAMES_ARY[] =
     "standard",
     "styles",
     "officorr",
+    "govodftool",
+    "odftemplate",
     "offimisc",
     "personal",
     "presnt",
