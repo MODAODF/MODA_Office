@@ -37,4 +37,24 @@ en-US = "Shapes"
 [sounds_name]
 en-US = "Sounds"
 
+[country_name]
+en-US = "country"
+zh-TW = "國旗"
+
+[odficons_name]
+en-US = "ODF icons"
+zh-TW = "ODF圖示"
+
+[hospital_name]
+en-US = "hospital"
+zh-TW = "醫院"
+
+[forbidden_name]
+en-US = "forbidden"
+zh-TW = "禁止符號"
+
+[fileformat_name]
+en-US = "fileformat"
+zh-TW = "檔案格式"
+
 /* vim:set shiftwidth=4 softtabstop=4 expandtab: */

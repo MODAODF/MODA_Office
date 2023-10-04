@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-system_galleries := arrows bpmn bullets diagrams flowchart fontwork icons network shapes symbolshapes
+system_galleries := arrows bpmn bullets diagrams flowchart fontwork icons network shapes symbolshapes country odficons hospital forbidden fileformat
 
 $(eval $(call gb_Package_Package,extras_gallsystem,$(SRCDIR)/extras/source/gallery/gallery_system))
 

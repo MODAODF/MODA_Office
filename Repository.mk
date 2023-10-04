@@ -999,6 +999,11 @@ $(eval $(call gb_Helper_register_packages_for_install,ooo,\
 	extras_gallroot \
 	extras_gallsystem \
 	extras_gallsystemstr \
+	extras_gallcountry \
+	extras_gallodficons \
+	extras_gallforbidden \
+	extras_gallhospital \
+	extras_gallfileformat \
 	extras_glade \
 	extras_labels \
 	$(if $(filter WNT,$(OS)),extras_newfiles) \

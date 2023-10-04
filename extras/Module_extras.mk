@@ -30,6 +30,11 @@ $(eval $(call gb_Module_add_targets,extras,\
 	Package_gallroot \
 	Package_gallsystem \
 	Package_gallsystemstr \
+	Package_gallcountry \
+	Package_gallodficons \
+	Package_gallforbidden \
+	Package_gallhospital \
+	Package_gallfileformat \
 	Package_glade \
 	Package_labels \
 	$(if $(filter WNT,$(OS)),Package_newfiles) \
