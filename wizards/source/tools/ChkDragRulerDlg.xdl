@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:id="Dialog1" dlg:left="208" dlg:top="74" dlg:width="196" dlg:height="62" dlg:closeable="true" dlg:moveable="true" dlg:title="尺規調整提示">
+ <dlg:bulletinboard>
+  <dlg:button dlg:id="CommandButton1" dlg:tab-index="0" dlg:left="70" dlg:top="44" dlg:width="57" dlg:height="13" dlg:value="~確定" dlg:button-type="ok"/>
+  <dlg:checkbox dlg:id="CheckBox1" dlg:tab-index="1" dlg:left="14" dlg:top="31" dlg:width="78" dlg:height="10" dlg:value="~不再顯示此提示" dlg:tristate="true" dlg:checked="false"/>
+  <dlg:text dlg:id="Label1" dlg:tab-index="2" dlg:left="8" dlg:top="9" dlg:width="182" dlg:height="11" dlg:value="「該段落已套用清單樣式，若套用相關設定會與原樣式設定值不同」" dlg:multiline="true"/>
+ </dlg:bulletinboard>
+</dlg:window>

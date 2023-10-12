@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="OxTools" script:language="StarBasic">REM  *****  BASIC  *****
+
+
+Function SetDefaultParaStyle()
+&apos;----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+&apos;----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+&apos;----------------------------------------------------------------------
+dim args1(1) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;Template&quot;
+args1(0).Value = &quot;預設段落樣式&quot;
+args1(1).Name = &quot;Family&quot;
+args1(1).Value = 2
+
+dispatcher.executeDispatch(document, &quot;.uno:StyleApply&quot;, &quot;&quot;, 0, args1())
+End Function
+
+Function _IsCustomNumberingStyle() as Boolean
+	On Error Goto ErrorHandler
+	if not thiscomponent.supportsService(&quot;com.sun.star.text.TextDocument&quot;) then
+		exit function
+	end if
+&apos;----------------------------------------------------------------------
+	Dim vDoc as object
+	Dim oViewCursor as object
+	Dim isautomatic as boolean
+&apos;----------------------------------------------------------------------
+	if isNull(vDoc) then
+		vDoc = ThisComponent
+	end if
+
+	oViewCursor = vDoc.CurrentController.getViewCursor()
+
+	if oViewCursor.NumberingIsNumber then
+		isautomatic = oViewCursor.NumberingRules.IsAutomatic
+		if isautomatic then
+			_IsCustomNumberingStyle = False
+		else
+			_IsCustomNumberingStyle = True
+		end if
+	else
+		_IsCustomNumberingStyle = False
+	end if
+
+	ErrorHandler:
+		exit function
+End Function
+
+Function ChkDragRuler as Boolean
+	Dim oDlg As Object
+	Dim oClick As Boolean
+
+	&apos;oDlg = createunodialog(DialogLibraries.Tools.ChkDragRulerDlg)
+	oDlg = LoadDialog(&quot;Tools&quot;, &quot;ChkDragRulerDlg&quot;)
+	oClick = oDlg.execute()
+	If oClick = 0 Then Exit Function
+	&apos;
+	ChkDragRuler = oDlg.getControl(&quot;CheckBox1&quot;).State
+
+End Function
+
+</script:module>
