@@ -13408,7 +13408,7 @@ if test -z "${enable_ext_cpmlibre+set}"; then :
 else
     CPMLIBRE_EXTENSION_PACK=yes
 fi
-$as_echo "CPMLIBRE_EXTENSION_PACK = $CPMLIBRE_EXTENSION_PACK"
+AS_ECHO(["CPMLIBRE_EXTENSION_PACK = $CPMLIBRE_EXTENSION_PACK"])
 AC_SUBST(CPMLIBRE_EXTENSION_PACK)
 
 # Check whether --enable-ext-hyperlink was given.
@@ -13418,7 +13418,7 @@ if test -z "${enable_ext_hyperlink+set}"; then :
 else
     HYPERLINK_EXTENSION_PACK=yes
 fi
-$as_echo "HYPERLINK_EXTENSION_PACK = $HYPERLINK_EXTENSION_PACK"
+AS_ECHO(["HYPERLINK_EXTENSION_PACK = $HYPERLINK_EXTENSION_PACK"])
 AC_SUBST(HYPERLINK_EXTENSION_PACK)
 
 # Check whether --enable-ext-onekey2odf was given.
@@ -13428,7 +13428,7 @@ if test -z "${enable_ext_onekey2odf+set}"; then :
 else
     ONEKEY2ODF_EXTENSION_PACK=yes
 fi
-$as_echo "ONEKEY2ODF_EXTENSION_PACK = $ONEKEY2ODF_EXTENSION_PACK"
+AS_ECHO(["ONEKEY2ODF_EXTENSION_PACK = $ONEKEY2ODF_EXTENSION_PACK"])
 AC_SUBST(ONEKEY2ODF_EXTENSION_PACK)
 
 # Check whether --enable-ext-odfhelp was given.
@@ -13438,7 +13438,7 @@ if test -z "${enable_ext_odfhelp+set}"; then :
 else
     ODFHELP_EXTENSION_PACK=yes
 fi
-$as_echo "ODFHELP_EXTENSION_PACK = $ODFHELP_EXTENSION_PACK"
+AS_ECHO(["ODFHELP_EXTENSION_PACK = $ODFHELP_EXTENSION_PACK"])
 AC_SUBST(ODFHELP_EXTENSION_PACK)
 
 # Check whether --enable-ext-vrtnetworkequipment was given.
@@ -13448,7 +13448,7 @@ if test -z "${enable_ext_vrtnetworkequipment+set}"; then :
 else
     VRTNETWORKEQUIPMENT_EXTENSION_PACK=yes
 fi
-$as_echo "VRTNETWORKEQUIPMENT_EXTENSION_PACK = $VRTNETWORKEQUIPMENT_EXTENSION_PACK"
+AS_ECHO(["VRTNETWORKEQUIPMENT_EXTENSION_PACK = $VRTNETWORKEQUIPMENT_EXTENSION_PACK"])
 AC_SUBST(VRTNETWORKEQUIPMENT_EXTENSION_PACK)
 
 # Check whether --enable-ext-formatcheck was given.
@@ -13458,7 +13458,7 @@ if test -z "${enable_ext_formatcheck+set}"; then :
 else
     FORMATCHECK_EXTENSION_PACK=yes
 fi
-$as_echo "FORMATCHECK_EXTENSION_PACK = $FORMATCHECK_EXTENSION_PACK"
+AS_ECHO(["FORMATCHECK_EXTENSION_PACK = $FORMATCHECK_EXTENSION_PACK"])
 AC_SUBST(FORMATCHECK_EXTENSION_PACK)
 
 # Check whether --enable-ext-subscription was given.
@@ -13468,7 +13468,7 @@ if test -z "${enable_ext_subscription+set}"; then :
 else
     SUBSCRIPTION_EXTENSION_PACK=yes
 fi
-$as_echo "SUBSCRIPTION_EXTENSION_PACK = $SUBSCRIPTION_EXTENSION_PACK"
+AS_ECHO(["SUBSCRIPTION_EXTENSION_PACK = $SUBSCRIPTION_EXTENSION_PACK"])
 AC_SUBST(SUBSCRIPTION_EXTENSION_PACK)
 
 AC_MSG_CHECKING([whether to build opens___.ttf])
