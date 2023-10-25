@@ -358,7 +358,7 @@
       <value>https://hub.libreoffice.org/donation/</value>
     </prop>
     <prop oor:name="ReleaseNotesURL" oor:type="xs:string">
-      <value>https://hub.libreoffice.org/ReleaseNotes/</value>
+      <value>https://moda.gov.tw/digital-affairs/digital-service/app-services/248</value>
     </prop>
     <prop oor:name="CreditsURL" oor:type="xs:string">
       <value>https://hub.libreoffice.org/credits/</value>

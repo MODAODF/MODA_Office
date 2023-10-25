@@ -719,9 +719,11 @@ static bool impl_showOnlineHelp(const OUString& rURL, weld::Widget* pDialogParen
         return false;
 
     OUString aHelpLink = officecfg::Office::Common::Help::HelpRootURL::get();
+#if 0
     OUString aTarget = OUString::Concat("Target=") + rURL.subView(aInternal.getLength());
     aTarget = aTarget.replaceAll("%2F", "/").replaceAll("?", "&");
     aHelpLink += aTarget;
+#endif
 
     if (comphelper::LibreOfficeKit::isActive())
     {
@@ -1142,7 +1144,8 @@ bool SfxHelp::Start_Impl(const OUString& rURL, const vcl::Window* pWindow)
 
         if ( !impl_hasHelpInstalled() )
         {
-            bool bShowOfflineHelpPopUp = officecfg::Office::Common::Help::BuiltInHelpNotInstalledPopUp::get();
+            // The query dialog box is never shown.
+            bool bShowOfflineHelpPopUp = officecfg::Office::Common::Help::BuiltInHelpNotInstalledPopUp::get() ? false : false;
 
             TopLevelWindowLocker aBusy;
 
