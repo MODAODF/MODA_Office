@@ -813,8 +813,7 @@ namespace vcl
     {
         m_pImpl->sTitleBase = m_xAssistant->get_title();
 
-        const bool bHideHelp = comphelper::LibreOfficeKit::isActive() &&
-            officecfg::Office::Common::Help::HelpRootURL::get().isEmpty();
+        const bool bHideHelp = true; // always hide help button for now
         // create the buttons according to the wizard button flags
         // the help button
         if (nButtonFlags & WizardButtonFlags::HELP && !bHideHelp)

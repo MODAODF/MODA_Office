@@ -797,8 +797,7 @@ VclBuilder::VclBuilder(vcl::Window* pParent, const OUString& sUIDir, const OUStr
     }
 #endif
 
-    const bool bHideHelp = comphelper::LibreOfficeKit::isActive() &&
-        officecfg::Office::Common::Help::HelpRootURL::get().isEmpty();
+    const bool bHideHelp = true; // always hide help button for now
     if (bHideHelp)
     {
         if (vcl::Window *pHelpButton = get("help"))

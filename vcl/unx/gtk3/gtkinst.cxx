@@ -23597,8 +23597,7 @@ private:
 
     void postprocess_widget(GtkWidget* pWidget)
     {
-        const bool bHideHelp = comphelper::LibreOfficeKit::isActive() &&
-            officecfg::Office::Common::Help::HelpRootURL::get().isEmpty();
+        const bool bHideHelp = true; // always hide help button for now
 
         //fixup icons
         //wanted: better way to do this, e.g. make gtk use gio for
