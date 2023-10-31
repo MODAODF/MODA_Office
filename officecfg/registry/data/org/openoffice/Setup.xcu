@@ -284,7 +284,7 @@
           <value>2</value>
         </prop>
         <prop oor:name="ooSetupFactoryTemplateFile">
-          <value/>
+          <value>$(insturl)/@LIBO_SHARE_FOLDER@/template/common/ODFTemplate/swriter.ott</value>
         </prop>
         <prop oor:name="ooSetupFactorySystemDefaultTemplateChanged">
           <value>false</value>
