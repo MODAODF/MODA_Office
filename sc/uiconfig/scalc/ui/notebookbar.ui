@@ -2954,7 +2954,7 @@
                         </child>
                         <child>
                           <object class="sfxlo-NotebookbarToolBox" id="SectionBottom1">
-                            <property name="visible">True</property>
+                            <property name="visible">False</property>
                             <property name="can_focus">True</property>
                             <property name="halign">end</property>
                             <property name="hexpand">True</property>
@@ -3014,7 +3014,7 @@
                         <child>
                           <object class="svtlo-ManagedMenuButton" id="File-HelpButton:Menu Help">
                             <property name="label" translatable="yes" context="CalcNotebookbar|HelpMenuButton">_Help</property>
-                            <property name="visible">True</property>
+                            <property name="visible">False</property>
                             <property name="can_focus">True</property>
                             <property name="focus_on_click">False</property>
                             <property name="receives_default">False</property>
