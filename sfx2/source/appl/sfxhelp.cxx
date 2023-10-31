@@ -1314,7 +1314,8 @@ bool SfxHelp::Start_Impl(const OUString& rURL, weld::Widget* pWidget, const OUSt
 
         if ( !impl_hasHelpInstalled() )
         {
-            bool bShowOfflineHelpPopUp = officecfg::Office::Common::Help::BuiltInHelpNotInstalledPopUp::get();
+            // The query dialog box is never shown.
+            bool bShowOfflineHelpPopUp = officecfg::Office::Common::Help::BuiltInHelpNotInstalledPopUp::get() ? false : false;
 
             TopLevelWindowLocker aBusy;
 
