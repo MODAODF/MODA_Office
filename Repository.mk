@@ -884,6 +884,12 @@ $(eval $(call gb_Helper_register_packages_for_install,extensions_TEMPLATEREPO,\
 ))
 endif
 
+ifeq ($(QRCODEPRINT_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_QRCODEPRINT,\
+	QRcodePrint \
+))
+endif
+
 $(eval $(call gb_Helper_register_jars,OXT, \
 	EvolutionarySolver \
 	active_java \

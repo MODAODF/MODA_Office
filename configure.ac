@@ -13410,6 +13410,7 @@ moda_CHECK_EXTENSION([ODFHelp],[ODFHELP],[odfhelp],[odfhelp],[])
 moda_CHECK_EXTENSION([VrtNetworkEquipment],[VRTNETWORKEQUIPMENT],[vrtnetworkequipment],[vrtnetworkequipment],[])
 moda_CHECK_EXTENSION([FormatCheck],[FORMATCHECK],[formatcheck],[formatcheck],[])
 moda_CHECK_EXTENSION([Subscription],[SUBSCRIPTION],[subscription],[subscription],[])
+moda_CHECK_EXTENSION([QRcodePrint],[QRCODEPRINT],[qrcodeprint],[qrcodeprint],[])
 
 libo_CHECK_EXTENSION([Numbertext],[NUMBERTEXT],[numbertext],[numbertext],[b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt])
 if test "x$with_java" != "xno"; then
@@ -13485,6 +13486,16 @@ else
 fi
 AS_ECHO(["SUBSCRIPTION_EXTENSION_PACK = $SUBSCRIPTION_EXTENSION_PACK"])
 AC_SUBST(SUBSCRIPTION_EXTENSION_PACK)
+
+# Check whether --enable-ext-qrcodeprint was given.
+# AC_MSG_CHECKING([for qrcodeprint])
+if test -z "${enable_ext_qrcodeprint+set}"; then :
+    QRCODEPRINT_EXTENSION_PACK=
+else
+    QRCODEPRINT_EXTENSION_PACK=yes
+fi
+$as_echo "QRCODEPRINT_EXTENSION_PACK = $QRCODEPRINT_EXTENSION_PACK"
+AC_SUBST(QRCODEPRINT_EXTENSION_PACK)
 
 AC_MSG_CHECKING([whether to build opens___.ttf])
 if test "$enable_build_opensymbol" = "yes"; then
@@ -14690,7 +14701,9 @@ if test "$enable_mpl_subset" = "yes"; then
     fi
     # cf. m4/libo_check_extension.m4
     if test "x$WITH_EXTRA_EXTENSIONS" != "x"; then
-        AC_MSG_ERROR([need to disable extra extensions '$WITH_EXTRA_EXTENSIONS'])
+	if test "x$QRCODEPRINT_EXTENSION_PACK" = "x"; then
+        	AC_MSG_ERROR([need to disable extra extensions '$WITH_EXTRA_EXTENSIONS'])
+	fi
     fi
     for theme in $WITH_THEMES; do
         case $theme in

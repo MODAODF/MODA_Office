@@ -231,4 +231,19 @@ Module gid_Module_Optional_Extensions_TEMPLATEREPO
 End
 #endif
 
+/* ** QRCODEPRINT ** */
+
+#ifdef WITH_EXTENSION_QRCODEPRINT
+Module gid_Module_Optional_Extensions_QRCODEPRINT
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_QRCODEPRINT);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_QRCODEPRINT );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
 #endif

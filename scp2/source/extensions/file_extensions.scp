@@ -178,4 +178,17 @@ End
 
 #endif
 
+/* ** QRCODEPRINT ** */
+
+#ifdef WITH_EXTENSION_QRCODEPRINT
+
+File gid_File_Oxt_QRCODEPRINT
+    TXT_FILE_BODY;
+    Styles = (PACKED, FILELIST);
+    Dir = FILELIST_DIR;
+    Name = "QRcodePrint.filelist";
+End
+
+#endif
+
 #endif

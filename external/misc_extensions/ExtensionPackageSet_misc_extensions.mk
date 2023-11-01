@@ -41,4 +41,8 @@ ifeq ($(SUBSCRIPTION_EXTENSION_PACK),yes)
 $(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,Subscription,$(SUBSCRIPTION_OXT_MICRO).oxt))
 endif
 
+ifneq ($(QRCODEPRINT_EXTENSION_PACK),)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,QRcodePrint,$(QRCODEPRINT_OXT_TARBALL)))
+endif
+
 # vim: set noet sw=4 ts=4:
