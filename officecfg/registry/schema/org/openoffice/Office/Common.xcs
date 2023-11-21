@@ -5883,6 +5883,20 @@
         </info>
         <value>true</value>
       </prop>
+      <prop oor:name="OxtFormatCheck" oor:type="xs:boolean" oor:nillable="false">
+        <info>
+          <desc>Specifies oxt FormatCheck default enabled.</desc>
+          <label>OxtFormatCheck</label>
+        </info>
+        <value>true</value>
+      </prop>
+      <prop oor:name="OxtSubscription" oor:type="xs:boolean" oor:nillable="false">
+        <info>
+          <desc>Specifies oxt Subscription default enabled.</desc>
+          <label>OxtSubscription</label>
+        </info>
+        <value>true</value>
+      </prop>
     </group>
     <group oor:name="Forms">
       <info>

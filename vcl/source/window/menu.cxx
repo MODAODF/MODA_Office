@@ -56,6 +56,7 @@
 #include <map>
 #include <string_view>
 #include <vector>
+#include <officecfg/Office/Common.hxx>
 
 namespace vcl
 {
@@ -72,6 +73,20 @@ using namespace vcl;
 
 #define EXTRAITEMHEIGHT     4
 #define SPACE_AROUND_TITLE  4
+#include <com/sun/star/frame/theGlobalEventBroadcaster.hpp>
+
+using namespace ::com::sun::star::uno;
+using namespace ::com::sun::star::beans;
+
+// add oxt-menuitems need checkmark
+std::vector< OUString > CheckMarkList =
+{
+     "FormatCheckEvent",
+     "SubscriptionEvent",
+};
+
+// oxt-menuitems default checkmark
+std::vector< OUString > DMarkList;
 
 static bool ImplAccelDisabled()
 {
@@ -327,9 +342,40 @@ void Menu::Deactivate()
     }
 }
 
+static void OxtSwitch(OUString oxtname, bool enable)
+{
+    std::shared_ptr< comphelper::ConfigurationChanges > batch(
+        comphelper::ConfigurationChanges::create());
+
+    if (oxtname.indexOf("FormatCheckEvent") != -1)
+            officecfg::Office::Common::Misc::OxtFormatCheck::set(enable, batch);
+    if (oxtname.indexOf("SubscriptionEvent") != -1)
+            officecfg::Office::Common::Misc::OxtSubscription::set(enable, batch);
+    batch->commit();
+}
+
 void Menu::ImplSelect()
 {
     MenuItemData* pData = GetItemList()->GetData( nSelectedId );
+
+    // oxt-menuitems checkmark
+    int checkmark = 0;
+    for(int i=0; i<CheckMarkList.size(); i++)
+    {
+        checkmark = pData->aCommandStr.indexOf(CheckMarkList[i]);
+        if (checkmark > 1)
+        {
+            if (pData->bChecked)
+            {
+                CheckItem( pData->nId, false );
+                OxtSwitch( CheckMarkList[i], false );
+            } else {
+                CheckItem( pData->nId, true );
+                OxtSwitch( CheckMarkList[i], true );
+            }
+        }
+    }
+
     if ( pData && (pData->nBits & MenuItemBits::AUTOCHECK) )
     {
         bool bChecked = IsItemChecked( nSelectedId );
@@ -1821,6 +1867,42 @@ void Menu::ImplPaint(vcl::RenderContext& rRenderContext, Size const & rSize,
 
                 tools::Rectangle aOuterCheckRect(Point(aPos.X()+nImgOrChkPos, aPos.Y()),
                                           Size(pData->aSz.Height(), pData->aSz.Height()));
+                // for FormatCheck oxt
+                if (pData->aCommandStr.indexOf("FormatCheckEvent") > 1)
+                {
+                    const bool bOxtFormatCheck = officecfg::Office::Common::Misc::OxtFormatCheck::get();
+                    if (bOxtFormatCheck)
+                    {
+                        DMarkList.push_back("FormatCheckEvent");
+                    } else {
+                        DMarkList.erase(std::remove(DMarkList.begin(), DMarkList.end(), "FormatCheckEvent"), DMarkList.end());
+                    }
+                }
+
+                // for Subscription oxt
+                if (pData->aCommandStr.indexOf("SubscriptionEvent") > 1)
+                {
+                    const bool bOxtSubscription = officecfg::Office::Common::Misc::OxtSubscription::get();
+                    if (bOxtSubscription)
+                    {
+                        DMarkList.push_back("SubscriptionEvent");
+                    } else {
+                        DMarkList.erase(std::remove(DMarkList.begin(), DMarkList.end(), "SubscriptionEvent"), DMarkList.end());
+                    }
+                }
+
+                // oxt default checked
+                if (!DMarkList.empty())
+                {
+                    for(int i=0; i<DMarkList.size(); i++)
+                    {
+                        if (pData->aCommandStr.indexOf(DMarkList[i]) > 1)
+                        {
+                            pData->bChecked = true;
+                            break;
+                        }
+                    }
+                }
 
                 // CheckMark
                 if (!bLayout && !IsMenuBar() && pData->HasCheck())
