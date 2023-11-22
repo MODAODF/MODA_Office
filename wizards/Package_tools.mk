@@ -29,6 +29,8 @@ $(eval $(call gb_Package_add_files,wizards_basicsrvtools,$(LIBO_SHARE_FOLDER)/ba
 	script.xlb \
 	Strings.xba \
 	UCB.xba \
+	ChkDragRulerDlg.xdl \
+	OxTools.xba \
 ))
 
 # vim: set noet sw=4 ts=4:
