@@ -3381,7 +3381,7 @@
           <desc>Specifies the root URL to the Office help pages. Blank disables
           Help buttons on dialogs in LibreOffice Online.</desc>
         </info>
-        <value>https://moda.gov.tw/?</value>
+        <value>https://moda.gov.tw/digital-affairs/digital-service/app-services/248</value>
       </prop>
       <group oor:name="StartCenter">
         <info>
