@@ -9,7 +9,7 @@
 
 $(eval $(call gb_Gallery_Gallery,odficons,extras/source/gallery/odficons))
 
-$(eval $(call gb_Gallery_add_files,odficons,$(LIBO_SHARE_FOLDER)/gallery/odficons,\
+$(eval $(call gb_Gallery_add_files,odficons,$(LIBO_SHARE_FOLDER)/gallery/odf_icons,\
 	extras/source/gallery/odficons/LibreOffice_6.1_Calc_Icon.svg \
 	extras/source/gallery/odficons/LibreOffice_6.1_Draw_Icon.svg \
 	extras/source/gallery/odficons/LibreOffice_6.1_Impress_Icon.svg \

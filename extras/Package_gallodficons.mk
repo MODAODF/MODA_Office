@@ -9,7 +9,7 @@
 
 $(eval $(call gb_Package_Package,extras_gallodficons,$(SRCDIR)/extras/source/gallery/odficons))
 
-$(eval $(call gb_Package_add_files,extras_gallodficons,$(LIBO_SHARE_FOLDER)/gallery/odficons,\
+$(eval $(call gb_Package_add_files,extras_gallodficons,$(LIBO_SHARE_FOLDER)/gallery/odf_icons,\
 	LibreOffice_6.1_Calc_Icon.svg \
 	LibreOffice_6.1_Draw_Icon.svg \
 	LibreOffice_6.1_Impress_Icon.svg \
