@@ -360,7 +360,7 @@ void Menu::ImplSelect()
 
     // oxt-menuitems checkmark
     int checkmark = 0;
-    for(int i=0; i<CheckMarkList.size(); i++)
+    for(size_t i = 0; i < CheckMarkList.size(); i++)
     {
         checkmark = pData->aCommandStr.indexOf(CheckMarkList[i]);
         if (checkmark > 1)
@@ -1894,7 +1894,7 @@ void Menu::ImplPaint(vcl::RenderContext& rRenderContext, Size const & rSize,
                 // oxt default checked
                 if (!DMarkList.empty())
                 {
-                    for(int i=0; i<DMarkList.size(); i++)
+                    for(size_t i = 0; i < DMarkList.size(); i++)
                     {
                         if (pData->aCommandStr.indexOf(DMarkList[i]) > 1)
                         {
