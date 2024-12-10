@@ -1978,6 +1978,10 @@ bool SfxStoringHelper::WarnUnacceptableFormat( const uno::Reference< frame::XMod
                                                     const OUString& aDefExtension,
                                                     bool bDefIsAlien )
 {
+    // if the document is in LibreOfficeKit mode, we don't need to show the dialog
+    if (comphelper::LibreOfficeKit::isActive())
+        return true;
+
     /* Ignores whether format checking has been disabled.
     if ( !officecfg::Office::Common::Save::Document::WarnAlienFormat::get() )
         return true;
