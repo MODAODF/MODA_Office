@@ -111,4 +111,94 @@ End
 
 #endif
 
+/* ** CPMLIBRE ** */
+
+#ifdef WITH_EXTENSION_CPMLIBRE
+Module gid_Module_Optional_Extensions_CPMLIBRE
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_CPMLIBRE);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_CPMLIBRE );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** VRTNETWORKEQUIPMENT ** */
+
+#ifdef WITH_EXTENSION_VRTNETWORKEQUIPMENT
+Module gid_Module_Optional_Extensions_VRTNETWORKEQUIPMENT
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_VRTNETWORKEQUIPMENT);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_VRTNETWORKEQUIPMENT );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** FORMATCHECK ** */
+
+#ifdef WITH_EXTENSION_FORMATCHECK
+Module gid_Module_Optional_Extensions_FORMATCHECK
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_FORMATCHECK);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_FORMATCHECK );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** SUBSCRIPTION ** */
+
+#ifdef WITH_EXTENSION_SUBSCRIPTION
+Module gid_Module_Optional_Extensions_SUBSCRIPTION
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_SUBSCRIPTION);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_SUBSCRIPTION );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** TEMPLATEREPO ** */
+
+#ifdef WITH_EXTENSION_TEMPLATEREPO
+Module gid_Module_Optional_Extensions_TEMPLATEREPO
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_TEMPLATEREPO);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_TEMPLATEREPO );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** QRCODEPRINT ** */
+
+#ifdef WITH_EXTENSION_QRCODEPRINT
+Module gid_Module_Optional_Extensions_QRCODEPRINT
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_QRCODEPRINT);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_QRCODEPRINT );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
 #endif
