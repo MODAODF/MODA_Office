@@ -4,6 +4,7 @@
  <library:element library:name="ModuleControls"/>
  <library:element library:name="Strings"/>
  <library:element library:name="Misc"/>
+ <library:element library:name="OxTools"/>
  <library:element library:name="UCB"/>
  <library:element library:name="Listbox"/>
  <library:element library:name="Debug"/>
