@@ -37,6 +37,8 @@ $(eval $(call gb_Module_add_targets,extras,\
 	Package_palettes \
 	Package_tplpresnt \
 	Package_tplwizdesktop \
+	Package_tplodf \
+	Package_tplgovodftool \
 	Package_wordbook \
 ))
 

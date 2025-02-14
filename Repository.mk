@@ -1021,6 +1021,8 @@ $(eval $(call gb_Helper_register_packages_for_install,ooo,\
 	extras_persona_white \
 	extras_tplpresnt \
 	extras_tplwizdesktop \
+	extras_tplodf \
+	extras_tplgovodftool \
 	$(if $(WITH_TEMPLATES),\
 		extras_templates \
 		extras_tplwizbitmap \
