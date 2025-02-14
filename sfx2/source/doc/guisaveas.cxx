@@ -2018,8 +2018,11 @@ bool SfxStoringHelper::WarnUnacceptableFormat( const uno::Reference< frame::XMod
                                                     const OUString& aDefExtension,
                                                     bool bDefIsAlien )
 {
+    /* Ignores whether format checking has been disabled.
+	
     if ( !officecfg::Office::Common::Save::Document::WarnAlienFormat::get() )
         return true;
+    */
 
     weld::Window* pWin = SfxStoringHelper::GetModelWindow(xModel);
     SfxAlienWarningDialog aDlg(pWin, aOldUIName, aDefExtension, bDefIsAlien);

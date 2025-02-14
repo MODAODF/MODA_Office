@@ -25,6 +25,8 @@
                 <property name="label" translatable="yes" context="alienwarndialog|cancel">Use %DEFAULTEXTENSION _Format</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
               </object>
@@ -40,8 +42,6 @@
                 <property name="label" translatable="yes" context="alienwarndialog|save">_Use %FORMATNAME Format</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_underline">True</property>
               </object>
@@ -63,7 +63,7 @@
         <child>
           <object class="GtkCheckButton" id="ask">
             <property name="label" translatable="yes" context="alienwarndialog|ask">_Ask when not saving in ODF or default format</property>
-            <property name="visible">True</property>
+            <property name="visible">False</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="use_underline">True</property>
