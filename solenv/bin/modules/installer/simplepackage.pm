@@ -405,16 +405,20 @@ sub create_package
                 push( @installer::globals::logfileinfo, $infoline);
             }
         }
-        elsif ($volume_name_classic_app eq 'LibreOffice' || $volume_name_classic_app eq 'LibreOfficeDev')
+        elsif ($volume_name_classic_app eq 'MODA ODF Application Tools')
         {
-            my $subdir = "$tempdir/$packagename/$volume_name_classic_app.app/Contents/Resources";
+            my $oldappdir = "$tempdir/$packagename/MODAODFApplicationTools.app";
+            my $newappdir = "$tempdir/$packagename/MODA ODF Application Tools.app";
+            installer::systemactions::rename_directory($oldappdir,$newappdir);
+            my $subdir = "$newappdir/Contents/Resources";
             if ( ! -d $subdir ) { installer::systemactions::create_directory($subdir); }
             # For non-release builds where no identity is, set entitlements
             # to allow Xcode's Instruments application to connect to the
             # application
             if ( $ENV{'MACOSX_CODESIGNING_IDENTITY'} || !$ENV{'ENABLE_RELEASE_BUILD'} )
             {
-                $systemcall = "$ENV{'SRCDIR'}/solenv/bin/macosx-codesign-app-bundle $localtempdir/$folder/$volume_name_classic_app.app";
+                $newappdir =~ s/ /\\ /g;
+                $systemcall = "$ENV{'SRCDIR'}/solenv/bin/macosx-codesign-app-bundle $newappdir";                $systemcall = "$ENV{'SRCDIR'}/solenv/bin/macosx-codesign-app-bundle $localtempdir/$folder/$volume_name_classic_app.app";
                 print "... $systemcall ...\n";
                 my $infoline = "Systemcall: $systemcall\n";
                 push( @installer::globals::logfileinfo, $infoline);
