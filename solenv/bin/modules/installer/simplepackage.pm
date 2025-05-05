@@ -285,7 +285,7 @@ sub create_package
 
         if ( ! $allvariables->{'HIDELICENSEDIALOG'} )
         {
-            installer::scriptitems::get_sourcepath_from_filename_and_includepath( \$sla, $includepatharrayref, 0);
+            $ref = installer::scriptitems::get_sourcepath_from_filename_and_includepath( \$sla, $includepatharrayref, 0);
         }
 
         my $localtempdir = $tempdir;
