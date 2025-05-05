@@ -422,7 +422,7 @@ sub create_package
             if ( $ENV{'MACOSX_CODESIGNING_IDENTITY'} || !$ENV{'ENABLE_RELEASE_BUILD'} )
             {
                 $newappdir =~ s/ /\\ /g;
-                $systemcall = "$ENV{'SRCDIR'}/solenv/bin/macosx-codesign-app-bundle $newappdir";                $systemcall = "$ENV{'SRCDIR'}/solenv/bin/macosx-codesign-app-bundle $localtempdir/$folder/$volume_name_classic_app.app";
+                $systemcall = "$ENV{'SRCDIR'}/solenv/bin/macosx-codesign-app-bundle $newappdir";
                 print "... $systemcall ...\n";
                 my $infoline = "Systemcall: $systemcall\n";
                 push( @installer::globals::logfileinfo, $infoline);
