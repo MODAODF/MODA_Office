@@ -111,6 +111,51 @@ End
 
 #endif
 
+/* ** ONEKEY2ODF ** */
+
+#ifdef WITH_EXTENSION_ONEKEY2ODF
+Module gid_Module_Optional_Extensions_ONEKEY2ODF
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_ONEKEY2ODF);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_ONEKEY2ODF );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** HYPERLINK ** */
+
+#ifdef WITH_EXTENSION_HYPERLINK
+Module gid_Module_Optional_Extensions_HYPERLINK
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_HYPERLINK);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_HYPERLINK );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** ODFHelp ** */
+
+#ifdef WITH_EXTENSION_ODFHELP
+Module gid_Module_Optional_Extensions_ODFHELP
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_ODFHELP);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_ODFHELP );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
 /* ** CPMLIBRE ** */
 
 #ifdef WITH_EXTENSION_CPMLIBRE
