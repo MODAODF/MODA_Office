@@ -20,6 +20,7 @@
 
 #include <rtl/ustring.hxx>
 #include <comphelper/comphelperdllapi.h>
+#include <climits>
 #include <ostream>
 #include <o3tl/typed_flags_set.hxx>
 #include <optional>
