@@ -45,6 +45,10 @@ class SwConvertTableDlg final : public SfxDialogController
     std::unique_ptr<weld::Container> m_xRepeatRows;
     std::unique_ptr<weld::SpinButton> m_xRepeatHeaderNF;
 
+    std::unique_ptr<weld::Container> m_xColumnNum;
+    std::unique_ptr<weld::SpinButton> m_xColumnNumNF;
+    sal_Int32 m_nUserColumnNum;
+
     std::unique_ptr<weld::CheckButton> m_xDontSplitCB;
     std::unique_ptr<weld::Button> m_xAutoFormatBtn;
 

@@ -81,6 +81,8 @@ void SwConvertTableDlg::GetValues(sal_Unicode& rDelim, SwInsertTableOptions& rIn
     if (mxTAutoFormat)
         prTAFormat = new SwTableAutoFormat(*mxTAutoFormat);
 
+    rInsTableOpts.mnColumns = m_xColumnNumNF->get_value();
+
     rInsTableOpts.mnInsMode = nInsMode;
 }
 
@@ -98,6 +100,8 @@ SwConvertTableDlg::SwConvertTableDlg(SwView& rView, bool bToTable)
     , m_xRepeatHeaderCB(m_xBuilder->weld_check_button("repeatheading"))
     , m_xRepeatRows(m_xBuilder->weld_container("repeatrows"))
     , m_xRepeatHeaderNF(m_xBuilder->weld_spin_button("repeatheadersb"))
+    , m_xColumnNum(m_xBuilder->weld_container("columnnumber"))
+    , m_xColumnNumNF(m_xBuilder->weld_spin_button("numcolmsb"))
     , m_xDontSplitCB(m_xBuilder->weld_check_button("dontsplitcb"))
     , m_xAutoFormatBtn(m_xBuilder->weld_button("autofmt"))
     , m_pShell(&rView.GetWrtShell())

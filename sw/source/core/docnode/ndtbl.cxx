@@ -632,8 +632,16 @@ const SwTable* SwDoc::TextToTable( const SwInsertTableOptions& rInsTableOpts,
     {
         SwNodeOffset nCnt = pStt->GetNodeIndex();
         for( ; nCnt <= pEnd->GetNodeIndex(); ++nCnt )
+	{
             if( !GetNodes()[ nCnt ]->IsTextNode() )
                 return nullptr;
+	    // if mnColumns > 0, add delimiter (cCh) after the text to add columns in the table
+	    for (int i=0; i<rInsTableOpts.mnColumns; i++) {
+		sal_Int32 nOffset = GetNodes()[nCnt]->GetTextNode()->GetText().getLength();
+		SwContentIndex newIdx(GetNodes()[nCnt]->GetTextNode(), nOffset);
+		GetNodes()[nCnt]->GetTextNode()->InsertText(rtl::OUString(cCh), newIdx);
+	    }
+	}
     }
 
     if (GetIDocumentUndoRedo().DoesUndo())
