@@ -171,7 +171,9 @@ SAXHelper::SAXHelper( )
         m_pSaxHandler = m_pParserCtxt->sax ;
 
         //Adjust the context
+SAL_WNODEPRECATED_DECLARATIONS_PUSH
         m_pParserCtxt->recovery = 1 ;
+SAL_WNODEPRECATED_DECLARATIONS_POP
     }
 }
 
@@ -218,9 +220,11 @@ void SAXHelper::setCurrentNode(const xmlNodePtr pNode)
      * stack's top has to been replaced with the same
      * node, in order to make compatibility.
      */
+SAL_WNODEPRECATED_DECLARATIONS_PUSH
     m_pParserCtxt->nodeTab[m_pParserCtxt->nodeNr - 1]
         = m_pParserCtxt->node
             = pNode;
+SAL_WNODEPRECATED_DECLARATIONS_POP
 }
 
 
@@ -238,7 +242,9 @@ void SAXHelper::startDocument()
      */
     xmlParserInputPtr pInput = xmlNewInputStream( m_pParserCtxt ) ;
 
+SAL_WNODEPRECATED_DECLARATIONS_PUSH
     if( m_pParserCtxt->inputTab != nullptr && m_pParserCtxt->inputMax != 0 )
+SAL_WNODEPRECATED_DECLARATIONS_POP
     {
         m_pParserCtxt->inputTab[0] = pInput ;
         m_pParserCtxt->input = pInput ;
