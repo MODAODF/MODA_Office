@@ -6370,7 +6370,7 @@
           <info>
             <desc>Option for comments.</desc>
           </info>
-          <value>false</value>
+          <value>true</value>
         </prop>
         <prop oor:name="Objects" oor:type="xs:boolean" oor:nillable="false">
           <info>
