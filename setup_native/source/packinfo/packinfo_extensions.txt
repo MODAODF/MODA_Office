@@ -155,21 +155,6 @@ packageversion = "%PACKAGEVERSION"
 End
 
 Start
-module = "gid_Module_Optional_Extensions_CPMLIBRE"
-solarispackagename = "%BASISPACKAGEPREFIX-extension-cpmlibre"
-solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
-packagename = "%BASISPACKAGEPREFIX-extension-cpmlibre"
-requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
-linuxpatchrequires = ""
-copyright = "OSSII"
-solariscopyright = "solariscopyrightfile"
-vendor = "%OOOVENDOR"
-description = "CPMLIBRE extension for %PRODUCTNAME %PRODUCTVERSION"
-destpath = "/opt"
-packageversion = "%PACKAGEVERSION"
-End
-
-Start
 module = "gid_Module_Optional_Extensions_VRTNETWORKEQUIPMENT"
 solarispackagename = "%BASISPACKAGEPREFIX-extension-vrtnetworkequipment"
 solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"

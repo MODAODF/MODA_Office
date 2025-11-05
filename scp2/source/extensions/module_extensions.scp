@@ -156,21 +156,6 @@ Module gid_Module_Optional_Extensions_ODFHELP
 End
 #endif
 
-/* ** CPMLIBRE ** */
-
-#ifdef WITH_EXTENSION_CPMLIBRE
-Module gid_Module_Optional_Extensions_CPMLIBRE
-    PackageInfo = "packinfo_extensions.txt";
-    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_CPMLIBRE);
-    ParentID = gid_Module_Optional_Extensions;
-    Files = (
-        gid_File_Oxt_CPMLIBRE );
-    Minimal = NO;
-    Default = YES;
-    Styles = ( );
-End
-#endif
-
 /* ** VRTNETWORKEQUIPMENT ** */
 
 #ifdef WITH_EXTENSION_VRTNETWORKEQUIPMENT

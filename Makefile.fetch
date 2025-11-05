@@ -245,9 +245,6 @@ $(WORKDIR)/download: $(BUILDDIR)/config_$(gb_Side).mk $(SRCDIR)/download.lst $(S
 		SUBSCRIPTION_OXT_TARBALL \
 	,$(call fetch_Download_item,https://github.com/MODAODF/Subscription/releases/download/$(SUBSCRIPTION_OXT_MICRO),$(item)))
 	$(foreach item, \
-		CPMLIBRE_OXT_TARBALL \
-	,$(call fetch_Download_item,https://github.com/MODAODF/cpmlibre/releases/download/$(CPMLIBRE_OXT_MICRO),$(item)))
-	$(foreach item, \
 		ODFHELP_OXT_TARBALL \
 	,$(call fetch_Download_item,https://github.com/MODAODF/ODFHelp/releases/download/$(ODFHELP_OXT_MICRO),$(item)))
 	$(foreach item, \

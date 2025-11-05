@@ -838,12 +838,6 @@ $(eval $(call gb_Helper_register_packages_for_install,extensions_numbertext,\
 ))
 endif
 
-ifeq ($(CPMLIBRE_EXTENSION_PACK),yes)
-$(eval $(call gb_Helper_register_packages_for_install,extensions_CPMLIBRE,\
-	cpmlibre \
-))
-endif
-
 ifeq ($(HYPERLINK_EXTENSION_PACK),yes)
 $(eval $(call gb_Helper_register_packages_for_install,extensions_HYPERLINK,\
 	hyperlink \

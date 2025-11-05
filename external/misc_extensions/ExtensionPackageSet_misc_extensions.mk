@@ -13,10 +13,6 @@ ifneq ($(NUMBERTEXT_EXTENSION_PACK),)
 $(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,numbertext,$(NUMBERTEXT_EXTENSION_PACK)))
 endif
 
-ifeq ($(CPMLIBRE_EXTENSION_PACK),yes)
-$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,cpmlibre,$(CPMLIBRE_OXT_MICRO).oxt))
-endif
-
 ifeq ($(HYPERLINK_EXTENSION_PACK),yes)
 $(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,hyperlink,$(HYPERLINK_OXT_MICRO).oxt))
 endif

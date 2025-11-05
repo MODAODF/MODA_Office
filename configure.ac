@@ -13614,7 +13614,6 @@ WITH_MODA_EXTRA_EXTENSIONS=
 AC_SUBST([WITH_MODA_EXTRA_EXTENSIONS])
 
 #$1: name, $2: WITH_EXTENSION_$2, $3: test enable_ext_$3, $4: --enable-ext-$4 $5: $2_EXTENSION_PACK="$5"
-moda_CHECK_EXTENSION([CpmLibre],[CPMLIBRE],[cpmlibre],[cpmlibre],[])
 moda_CHECK_EXTENSION([HyperLink],[HYPERLINK],[hyperlink],[hyperlink],[])
 moda_CHECK_EXTENSION([Onekey2ODF],[ONEKEY2ODF],[onekey2odf],[onekey2odf],[])
 moda_CHECK_EXTENSION([ODFHelp],[ODFHELP],[odfhelp],[odfhelp],[])
@@ -13633,16 +13632,6 @@ libo_CHECK_EXTENSION([Numbertext],[NUMBERTEXT],[numbertext],[numbertext],[b7cae4
 if test "x$with_java" != "xno"; then
     libo_CHECK_EXTENSION([NLPSolver],[NLPSOLVER],[nlpsolver],[nlpsolver],[])
 fi
-
-## Check whether --enable-ext-cpmlibre was given.
-## AC_MSG_CHECKING([for cpmlibre])
-#if test -z "${enable_ext_cpmlibre+set}"; then :
-#    CPMLIBRE_EXTENSION_PACK=no
-#else
-#    CPMLIBRE_EXTENSION_PACK=yes
-#fi
-#AS_ECHO(["CPMLIBRE_EXTENSION_PACK = $CPMLIBRE_EXTENSION_PACK"])
-#AC_SUBST(CPMLIBRE_EXTENSION_PACK)
 
 # Check whether --enable-ext-hyperlink was given.
 # AC_MSG_CHECKING([for hyperlink])
