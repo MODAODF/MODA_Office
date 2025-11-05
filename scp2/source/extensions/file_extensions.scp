@@ -192,4 +192,67 @@ End
 
 #endif
 
+/* ** RBCELLS ** */
+
+#ifdef WITH_EXTENSION_RBCELLS
+
+File gid_File_Oxt_RBCELLS
+    TXT_FILE_BODY;
+    Styles = (PACKED, FILELIST);
+    Dir = FILELIST_DIR;
+    Name = "RBCells.filelist";
+End
+
+#endif
+
+/* ** CPMPY ** */
+
+#ifdef WITH_EXTENSION_CPMPY
+
+File gid_File_Oxt_CPMPY
+    TXT_FILE_BODY;
+    Styles = (PACKED, FILELIST);
+    Dir = FILELIST_DIR;
+    Name = "CpmPy.filelist";
+End
+
+#endif
+
+/* ** WRITERBATCHIMAGE ** */
+
+#ifdef WITH_EXTENSION_WRITERBATCHIMAGE
+
+File gid_File_Oxt_WRITERBATCHIMAGE
+    TXT_FILE_BODY;
+    Styles = (PACKED, FILELIST);
+    Dir = FILELIST_DIR;
+    Name = "WriterBatchImage.filelist";
+End
+
+#endif
+/* ** IMPRESSBATCHIMAGE ** */
+
+#ifdef WITH_EXTENSION_IMPRESSBATCHIMAGE
+
+File gid_File_Oxt_IMPRESSBATCHIMAGE
+    TXT_FILE_BODY;
+    Styles = (PACKED, FILELIST);
+    Dir = FILELIST_DIR;
+    Name = "ImpressBatchImage.filelist";
+End
+
+#endif
+/* ** DISTRIBUTEDJUSTIFY ** */
+
+#ifdef WITH_EXTENSION_DISTRIBUTEDJUSTIFY
+
+File gid_File_Oxt_DISTRIBUTEDJUSTIFY
+    TXT_FILE_BODY;
+    Styles = (PACKED, FILELIST);
+    Dir = FILELIST_DIR;
+    Name = "DistributedJustify.filelist";
+End
+
+#endif
+
 #endif

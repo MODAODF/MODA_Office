@@ -246,4 +246,79 @@ Module gid_Module_Optional_Extensions_QRCODEPRINT
 End
 #endif
 
+/* ** RBCELLS ** */
+
+#ifdef WITH_EXTENSION_RBCELLS
+Module gid_Module_Optional_Extensions_RBCELLS
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_RBCELLS);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_RBCELLS );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** CPMPY ** */
+
+#ifdef WITH_EXTENSION_CPMPY
+Module gid_Module_Optional_Extensions_CPMPY
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_CPMPY);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_CPMPY );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** WRITERBATCHIMAGE ** */
+
+#ifdef WITH_EXTENSION_WRITERBATCHIMAGE
+Module gid_Module_Optional_Extensions_WRITERBATCHIMAGE
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_WRITERBATCHIMAGE);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_WRITERBATCHIMAGE );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** IMPRESSBATCHIMAGE ** */
+
+#ifdef WITH_EXTENSION_IMPRESSBATCHIMAGE
+Module gid_Module_Optional_Extensions_IMPRESSBATCHIMAGE
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_IMPRESSBATCHIMAGE);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_IMPRESSBATCHIMAGE );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
+/* ** DISTRIBUTEDJUSTIFY ** */
+
+#ifdef WITH_EXTENSION_DISTRIBUTEDJUSTIFY
+Module gid_Module_Optional_Extensions_DISTRIBUTEDJUSTIFY
+    PackageInfo = "packinfo_extensions.txt";
+    MOD_NAME_DESC(MODULE_OPTIONAL_EXTENSIONS_DISTRIBUTEDJUSTIFY);
+    ParentID = gid_Module_Optional_Extensions;
+    Files = (
+        gid_File_Oxt_DISTRIBUTEDJUSTIFY );
+    Minimal = NO;
+    Default = YES;
+    Styles = ( );
+End
+#endif
+
 #endif

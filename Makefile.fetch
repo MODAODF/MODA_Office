@@ -266,6 +266,21 @@ $(WORKDIR)/download: $(BUILDDIR)/config_$(gb_Side).mk $(SRCDIR)/download.lst $(S
 		QRCODEPRINT_OXT_TARBALL \
 	,$(call fetch_Download_item,https://github.com/MODAODF/QRcodePrint/releases/download/$(QRCODEPRINT_OXT_MICRO),$(item)))
 	$(foreach item, \
+		RBCELLS_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/remove_blank_cells/releases/download/$(RBCELLS_OXT_MICRO),$(item)))
+	$(foreach item, \
+		CPMPY_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/cpmpy/releases/download/$(CPMPY_OXT_MICRO),$(item)))
+	$(foreach item, \
+		WRITERBATCHIMAGE_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/writer-batch-import-images/releases/download/$(WRITERBATCHIMAGE_OXT_MICRO),$(item)))
+	$(foreach item, \
+		IMPRESSBATCHIMAGE_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/impress-batch-import-images/releases/download/$(IMPRESSBATCHIMAGE_OXT_MICRO),$(item)))
+	$(foreach item, \
+		DISTRIBUTEDJUSTIFY_OXT_TARBALL \
+	,$(call fetch_Download_item,https://github.com/MODAODF/distributed-justified/releases/download/$(DISTRIBUTEDJUSTIFY_OXT_MICRO),$(item)))
+	$(foreach item, \
 		VRTNETWORKEQUIPMENT_OXT_TARBALL \
 	,$(call fetch_Download_item,https://extensions.libreoffice.org/assets/downloads/z,$(item)))
 	@mkdir -p $(dir $@) && touch $@

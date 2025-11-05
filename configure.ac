@@ -13613,6 +13613,7 @@ AC_SUBST([WITH_EXTRA_EXTENSIONS])
 WITH_MODA_EXTRA_EXTENSIONS=
 AC_SUBST([WITH_MODA_EXTRA_EXTENSIONS])
 
+#$1: name, $2: WITH_EXTENSION_$2, $3: test enable_ext_$3, $4: --enable-ext-$4 $5: $2_EXTENSION_PACK="$5"
 moda_CHECK_EXTENSION([CpmLibre],[CPMLIBRE],[cpmlibre],[cpmlibre],[])
 moda_CHECK_EXTENSION([HyperLink],[HYPERLINK],[hyperlink],[hyperlink],[])
 moda_CHECK_EXTENSION([Onekey2ODF],[ONEKEY2ODF],[onekey2odf],[onekey2odf],[])
@@ -13621,21 +13622,27 @@ moda_CHECK_EXTENSION([VrtNetworkEquipment],[VRTNETWORKEQUIPMENT],[vrtnetworkequi
 moda_CHECK_EXTENSION([FormatCheck],[FORMATCHECK],[formatcheck],[formatcheck],[])
 moda_CHECK_EXTENSION([Subscription],[SUBSCRIPTION],[subscription],[subscription],[])
 moda_CHECK_EXTENSION([QRcodePrint],[QRCODEPRINT],[qrcodeprint],[qrcodeprint],[])
+moda_CHECK_EXTENSION([RBCells],[RBCELLS],[rbcells],[rbcells],[])
+moda_CHECK_EXTENSION([CpmPy],[CPMPY],[cpmpy],[cpmpy],[])
+moda_CHECK_EXTENSION([WriterBatchImage],[WRITERBATCHIMAGE],[writerbatchimage],[writerbatchimage],[])
+moda_CHECK_EXTENSION([ImpressBatchImage],[IMPRESSBATCHIMAGE],[impressbatchimage],[impressbatchimage],[])
+moda_CHECK_EXTENSION([DistributedJustify],[DISTRIBUTEDJUSTIFY],[distributedjustify],[distributedjustify],[])
+
 
 libo_CHECK_EXTENSION([Numbertext],[NUMBERTEXT],[numbertext],[numbertext],[b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt])
 if test "x$with_java" != "xno"; then
     libo_CHECK_EXTENSION([NLPSolver],[NLPSOLVER],[nlpsolver],[nlpsolver],[])
 fi
 
-# Check whether --enable-ext-cpmlibre was given.
-# AC_MSG_CHECKING([for cpmlibre])
-if test -z "${enable_ext_cpmlibre+set}"; then :
-    CPMLIBRE_EXTENSION_PACK=no
-else
-    CPMLIBRE_EXTENSION_PACK=yes
-fi
-AS_ECHO(["CPMLIBRE_EXTENSION_PACK = $CPMLIBRE_EXTENSION_PACK"])
-AC_SUBST(CPMLIBRE_EXTENSION_PACK)
+## Check whether --enable-ext-cpmlibre was given.
+## AC_MSG_CHECKING([for cpmlibre])
+#if test -z "${enable_ext_cpmlibre+set}"; then :
+#    CPMLIBRE_EXTENSION_PACK=no
+#else
+#    CPMLIBRE_EXTENSION_PACK=yes
+#fi
+#AS_ECHO(["CPMLIBRE_EXTENSION_PACK = $CPMLIBRE_EXTENSION_PACK"])
+#AC_SUBST(CPMLIBRE_EXTENSION_PACK)
 
 # Check whether --enable-ext-hyperlink was given.
 # AC_MSG_CHECKING([for hyperlink])
@@ -13706,6 +13713,56 @@ else
 fi
 AS_ECHO(["QRCODEPRINT_EXTENSION_PACK = $QRCODEPRINT_EXTENSION_PACK"])
 AC_SUBST(QRCODEPRINT_EXTENSION_PACK)
+
+# Check whether --enable-ext-rbcells was given.
+# AC_MSG_CHECKING([for rbcells])
+if test -z "${enable_ext_rbcells+set}"; then :
+    RBCELLS_EXTENSION_PACK=
+else
+    RBCELLS_EXTENSION_PACK=yes
+fi
+AS_ECHO(["RBCELLS_EXTENSION_PACK = $RBCELLS_EXTENSION_PACK"])
+AC_SUBST(RBCELLS_EXTENSION_PACK)
+
+# Check whether --enable-ext-cpmpy was given.
+# AC_MSG_CHECKING([for cpmpy])
+if test -z "${enable_ext_cpmpy+set}"; then :
+    CPMPY_EXTENSION_PACK=
+else
+    CPMPY_EXTENSION_PACK=yes
+fi
+AS_ECHO(["CPMPY_EXTENSION_PACK = $CPMPY_EXTENSION_PACK"])
+AC_SUBST(CPMPY_EXTENSION_PACK)
+
+# Check whether --enable-ext-writerbatchimage was given.
+# AC_MSG_CHECKING([for writerbatchimage])
+if test -z "${enable_ext_writerbatchimage+set}"; then :
+    WRITERBATCHIMAGE_EXTENSION_PACK=
+else
+    WRITERBATCHIMAGE_EXTENSION_PACK=yes
+fi
+AS_ECHO(["WRITERBATCHIMAGE_EXTENSION_PACK = $WRITERBATCHIMAGE_EXTENSION_PACK"])
+AC_SUBST(WRITERBATCHIMAGE_EXTENSION_PACK)
+
+# Check whether --enable-ext-impressbatchimage was given.
+# AC_MSG_CHECKING([for impressbatchimage])
+if test -z "${enable_ext_impressbatchimage+set}"; then :
+    IMPRESSBATCHIMAGE_EXTENSION_PACK=
+else
+    IMPRESSBATCHIMAGE_EXTENSION_PACK=yes
+fi
+AS_ECHO(["IMPRESSBATCHIMAGE_EXTENSION_PACK = $IMPRESSBATCHIMAGE_EXTENSION_PACK"])
+AC_SUBST(IMPRESSBATCHIMAGE_EXTENSION_PACK)
+
+# Check whether --enable-ext-distributedjustify was given.
+# AC_MSG_CHECKING([for distributedjustify])
+if test -z "${enable_ext_distributedjustify+set}"; then :
+    DISTRIBUTEDJUSTIFY_EXTENSION_PACK=
+else
+    DISTRIBUTEDJUSTIFY_EXTENSION_PACK=yes
+fi
+AS_ECHO(["DISTRIBUTEDJUSTIFY_EXTENSION_PACK = $DISTRIBUTEDJUSTIFY_EXTENSION_PACK"])
+AC_SUBST(DISTRIBUTEDJUSTIFY_EXTENSION_PACK)
 
 AC_MSG_CHECKING([whether to build opens___.ttf])
 if test "$enable_build_opensymbol" = "yes"; then

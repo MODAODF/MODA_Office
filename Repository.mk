@@ -886,6 +886,36 @@ $(eval $(call gb_Helper_register_packages_for_install,extensions_TEMPLATEREPO,\
 ))
 endif
 
+ifeq ($(RBCELLS_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_RBCELLS,\
+	rbcells \
+))
+endif
+
+ifeq ($(CPMPY_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_CPMPY,\
+	cpmpy \
+))
+endif
+
+ifeq ($(WRITERBATCHIMAGE_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_WRITERBATCHIMAGE,\
+	writerbatchimage \
+))
+endif
+
+ifeq ($(IMPRESSBATCHIMAGE_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_IMPRESSBATCHIMAGE,\
+	impressbatchimage \
+))
+endif
+
+ifeq ($(DISTRIBUTEDJUSTIFY_EXTENSION_PACK),yes)
+$(eval $(call gb_Helper_register_packages_for_install,extensions_DISTRIBUTEDJUSTIFY,\
+	distrbutedjustify \
+))
+endif
+
 ifeq ($(QRCODEPRINT_EXTENSION_PACK),yes)
 $(eval $(call gb_Helper_register_packages_for_install,extensions_QRCODEPRINT,\
 	QRcodePrint \

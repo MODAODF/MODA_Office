@@ -243,3 +243,79 @@ description = "QRCODEPRINT extension for %PRODUCTNAME %PRODUCTVERSION"
 destpath = "/opt"
 packageversion = "%PACKAGEVERSION"
 End
+
+Start
+module = "gid_Module_Optional_Extensions_RBCELLS"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-rbcells"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-rbcells"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "RBCells extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_CPMPY"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-cpmpy"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-cpmpy"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "CPMPY extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_WRITERBATCHIMAGE"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-writerbatchimage"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-writerbatchimage"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "WriterBatchImage extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_IMPRESSBATCHIMAGE"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-impressbatchimage"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-impressbatchimage"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "ImpressBatchImage extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+
+Start
+module = "gid_Module_Optional_Extensions_DISTRIBUTEDJUSTIFY"
+solarispackagename = "%BASISPACKAGEPREFIX-extension-distributedjustify"
+solarisrequires =  "%BASISPACKAGEPREFIX-core (Name="Core module for %PRODUCTNAME %PRODUCTVERSION")"
+packagename = "%BASISPACKAGEPREFIX-extension-distributedjustify"
+requires = "%BASISPACKAGEPREFIX-core %PACKAGEVERSION %PACKAGEVERSION-%PACKAGEREVISION"
+linuxpatchrequires = ""
+copyright = "OSSII"
+solariscopyright = "solariscopyrightfile"
+vendor = "%OOOVENDOR"
+description = "DistributedJustify extension for %PRODUCTNAME %PRODUCTVERSION"
+destpath = "/opt"
+packageversion = "%PACKAGEVERSION"
+End
+

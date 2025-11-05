@@ -45,4 +45,24 @@ ifneq ($(QRCODEPRINT_EXTENSION_PACK),)
 $(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,QRcodePrint,$(QRCODEPRINT_OXT_TARBALL)))
 endif
 
+ifneq ($(RBCELLS_EXTENSION_PACK),)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,RBCells,$(RBCELLS_OXT_TARBALL)))
+endif
+
+ifneq ($(CPMPY_EXTENSION_PACK),)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,CpmPy,$(CPMPY_OXT_TARBALL)))
+endif
+
+ifneq ($(WRITERBATCHIMAGE_EXTENSION_PACK),)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,WriterBatchImage,$(WRITERBATCHIMAGE_OXT_TARBALL)))
+endif
+
+ifneq ($(IMPRESSBATCHIMAGE_EXTENSION_PACK),)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,ImpressBatchImage,$(IMPRESSBATCHIMAGE_OXT_TARBALL)))
+endif
+
+ifneq ($(DISTRIBUTEDJUSTIFY_EXTENSION_PACK),)
+$(eval $(call gb_ExtensionPackageSet_add_extension,misc_extensions,DistributedJustify,$(DISTRIBUTEDJUSTIFY_OXT_TARBALL)))
+endif
+
 # vim: set noet sw=4 ts=4:
