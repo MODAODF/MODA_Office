@@ -8396,6 +8396,9 @@ static int lo_initialize(LibreOfficeKit* pThis, const char* pAppPath, const char
         HostFilter::setAllowedHostsRegex(pAllowlist);
     }
 
+    if (const char* pExtRefPaths = ::getenv("LOK_ALLOWED_EXTREF_PATHS"))
+        HostFilter::setAllowedExtRefPaths(pExtRefPaths);
+
     // What stage are we at ?
     if (pThis == nullptr)
     {
