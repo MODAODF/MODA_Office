@@ -729,17 +729,17 @@ public:
     explicit CffSubsetterContext( const U8* pBasePtr, int nBaseLen);
 
     bool    initialCffRead();
-    void    emitAsType1( class Type1Emitter&,
+    bool    emitAsType1( class Type1Emitter&,
                 const sal_GlyphId* pGlyphIds, const U8* pEncoding,
                 int nGlyphCount, FontSubsetInfo& );
 
 private:
-    void    convertCharStrings(const sal_GlyphId* pGlyphIds, int nGlyphCount,
+    bool    convertCharStrings(const sal_GlyphId* pGlyphIds, int nGlyphCount,
                 std::vector<CharString>& rCharStrings);
     int     convert2Type1Ops( CffLocal*, const U8* pType2Ops, int nType2Len, U8* pType1Ops, size_t nType1Cap);
-    void    convertOneTypeOp();
-    void    convertOneTypeEsc();
-    void    callType2Subr( bool bGlobal, int nSubrNumber);
+    bool    convertOneTypeOp();
+    bool    convertOneTypeEsc();
+    bool    callType2Subr( bool bGlobal, int nSubrNumber);
     sal_Int32 getReadOfs() const { return static_cast<sal_Int32>(mpReadPtr - mpBasePtr);}
 
     // Abandon the current dict-data parse on malformed input.  Advancing
@@ -946,7 +946,7 @@ void CffSubsetterContext::readDictOp()
         //TODO: if( nStackIdx > 0)
         int nInt = 0;
         switch( *pCmdName) {
-        default: SAL_WARN("vcl.fonts", "unsupported DictOp.type='" << *pCmdName << "'."); break;
+        default: SAL_WARN("vcl.fonts.cff", "unsupported DictOp.type='" << *pCmdName << "'."); break;
         case 'b':   // bool
             nInt = popInt();
             switch( nOpId) {
@@ -1237,7 +1237,7 @@ void CffSubsetterContext::writeCurveTo( int nStackPos,
     writeTypeOp( TYPE1OP::RCURVETO );
 }
 
-void CffSubsetterContext::convertOneTypeOp()
+bool CffSubsetterContext::convertOneTypeOp()
 {
     const int nType2Op = *(mpReadPtr++);
 
@@ -1245,7 +1245,8 @@ void CffSubsetterContext::convertOneTypeOp()
     // convert each T2op
     switch( nType2Op) {
     case TYPE2OP::T2ESC:
-        convertOneTypeEsc();
+        if (!convertOneTypeEsc())
+            return false;
         break;
     case TYPE2OP::HSTEM:
     case TYPE2OP::VSTEM:
@@ -1327,12 +1328,13 @@ void CffSubsetterContext::convertOneTypeOp()
         {
         nInt = popInt();
         const bool bGlobal = (nType2Op == TYPE2OP::CALLGSUBR);
-        callType2Subr( bGlobal, nInt);
+        if (!callType2Subr( bGlobal, nInt))
+            return false;
         }
         break;
     case TYPE2OP::RETURN:
         // TODO: check that we are in a subroutine
-        return;
+        return true;
     case TYPE2OP::VMOVETO:
     case TYPE2OP::HMOVETO:
         if( mbNeedClose)
@@ -1467,91 +1469,107 @@ void CffSubsetterContext::convertOneTypeOp()
             read2push();
         } else {
             popAll2Write( nType2Op);
-            assert(false && "TODO?");
+            SAL_WARN("vcl.fonts.cff", "unhandled type2op " << nType2Op);
+            return false;
         }
         break;
     }
+    return true;
 }
 
-void CffSubsetterContext::convertOneTypeEsc()
+bool CffSubsetterContext::convertOneTypeEsc()
 {
     const int nType2Esc = *(mpReadPtr++);
     ValType* pTop = &mnValStack[ mnStackIdx-1];
     // convert each T2op
     switch( nType2Esc) {
     case TYPE2OP::AND:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         pTop[0] = static_cast<ValType>(static_cast<int>(pTop[0]) & static_cast<int>(pTop[-1]));
         --mnStackIdx;
         break;
     case TYPE2OP::OR:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         pTop[0] = static_cast<ValType>(static_cast<int>(pTop[0]) | static_cast<int>(pTop[-1]));
         --mnStackIdx;
         break;
     case TYPE2OP::NOT:
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         pTop[0] = ValType(pTop[0] == 0);
         break;
     case TYPE2OP::ABS:
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         if( pTop[0] >= 0)
             break;
         [[fallthrough]];
     case TYPE2OP::NEG:
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         pTop[0] = -pTop[0];
         break;
     case TYPE2OP::ADD:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         pTop[0] += pTop[-1];
         --mnStackIdx;
         break;
     case TYPE2OP::SUB:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         pTop[0] -= pTop[-1];
         --mnStackIdx;
         break;
     case TYPE2OP::MUL:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         if( pTop[-1])
             pTop[0] *= pTop[-1];
         --mnStackIdx;
         break;
     case TYPE2OP::DIV:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         if( pTop[-1])
             pTop[0] /= pTop[-1];
         --mnStackIdx;
         break;
     case TYPE2OP::EQ:
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         pTop[0] = ValType(pTop[0] == pTop[-1]);
         --mnStackIdx;
         break;
     case TYPE2OP::DROP:
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         --mnStackIdx;
         break;
     case TYPE2OP::PUT: {
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         const int nIdx = static_cast<int>(pTop[0]);
-        assert( nIdx >= 0 );
-        assert( nIdx < NMAXTRANS );
+        if ( nIdx < 0 || nIdx >= NMAXTRANS )
+            return false;
         mnTransVals[ nIdx] = pTop[-1];
         mnStackIdx -= 2;
         break;
         }
     case TYPE2OP::GET: {
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         const int nIdx = static_cast<int>(pTop[0]);
-        assert( nIdx >= 0 );
-        assert( nIdx < NMAXTRANS );
+        if ( nIdx < 0 || nIdx >= NMAXTRANS )
+            return false;
         pTop[0] = mnTransVals[ nIdx ];
         break;
         }
     case TYPE2OP::IFELSE: {
-        assert( mnStackIdx >= 4 );
+        if ( mnStackIdx < 4 )
+            return false;
         if( pTop[-1] > pTop[0] )
             pTop[-3] = pTop[-2];
         mnStackIdx -= 3;
@@ -1568,37 +1586,41 @@ void CffSubsetterContext::convertOneTypeEsc()
         break;
     case TYPE2OP::DUP:
         if ( mnStackIdx < 1 || mnStackIdx >= NMAXSTACK )
-            break;
+            return false;
         pTop[+1] = pTop[0];
         ++mnStackIdx;
         break;
     case TYPE2OP::EXCH: {
-        assert( mnStackIdx >= 2 );
+        if ( mnStackIdx < 2 )
+            return false;
         const ValType nVal = pTop[0];
         pTop[0] = pTop[-1];
         pTop[-1] = nVal;
         break;
         }
     case TYPE2OP::INDEX: {
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         const int nVal = static_cast<int>(pTop[0]);
-        assert( nVal >= 0 );
-        assert( nVal < mnStackIdx-1 );
+        if ( nVal < 0 || nVal >= mnStackIdx-1 )
+            return false;
         pTop[0] = pTop[-1-nVal];
         break;
         }
     case TYPE2OP::ROLL: {
-        assert( mnStackIdx >= 1 );
+        if ( mnStackIdx < 1 )
+            return false;
         const int nNum = static_cast<int>(pTop[0]);
-        assert( nNum >= 0);
-        assert( nNum < mnStackIdx-2 );
-        (void)nNum; // TODO: implement
+        if ( nNum < 0 || nNum >= mnStackIdx-2 )
+            return false;
+        // (void)nNum; // TODO: implement
         // TODO: implement: const int nOfs = static_cast<int>(pTop[-1]);
         mnStackIdx -= 2;
         break;
         }
     case TYPE2OP::HFLEX1: {
-            assert( mnStackIdx == 9);
+            if ( mnStackIdx != 9 )
+                return false;
 
             writeCurveTo( mnStackIdx, -9, -8, -7, -6, -5,  0);
             writeCurveTo( mnStackIdx, -4,  0, -3, -2, -1,  0);
@@ -1608,7 +1630,8 @@ void CffSubsetterContext::convertOneTypeEsc()
         }
         break;
     case TYPE2OP::HFLEX: {
-            assert( mnStackIdx == 7);
+            if ( mnStackIdx != 7 )
+                return false;
             ValType* pX = &mnValStack[ mnStackIdx];
 
             pX[+1] = -pX[-5]; // temp: +dy5==-dy2
@@ -1620,7 +1643,8 @@ void CffSubsetterContext::convertOneTypeEsc()
         }
         break;
     case TYPE2OP::FLEX: {
-            assert( mnStackIdx == 13 );
+            if ( mnStackIdx != 13 )
+                return false;
             writeCurveTo( mnStackIdx, -13, -12, -11, -10, -9, -8 );
             writeCurveTo( mnStackIdx,  -7,  -6,  -5,  -4, -3, -2 );
             // ignoring ValType nFlexDepth = mnValStack[ mnStackIdx-1 ];
@@ -1628,7 +1652,8 @@ void CffSubsetterContext::convertOneTypeEsc()
         }
         break;
     case TYPE2OP::FLEX1: {
-            assert( mnStackIdx == 11 );
+            if ( mnStackIdx != 11 )
+                return false;
             // write the first part of the flex1-hinted curve
             writeCurveTo( mnStackIdx, -11, -10, -9, -8, -7, -6 );
 
@@ -1649,13 +1674,13 @@ void CffSubsetterContext::convertOneTypeEsc()
         }
         break;
     default:
-        SAL_WARN("vcl.fonts", "unhandled type2esc " << nType2Esc);
-        assert( false);
-        break;
+        SAL_WARN("vcl.fonts.cff", "unhandled type2esc " << nType2Esc);
+        return false;
     }
+    return true;
 }
 
-void CffSubsetterContext::callType2Subr( bool bGlobal, int nSubrNumber)
+bool CffSubsetterContext::callType2Subr( bool bGlobal, int nSubrNumber)
 {
     const U8* const pOldReadPtr = mpReadPtr;
     const U8* const pOldReadEnd = mpReadEnd;
@@ -1663,25 +1688,32 @@ void CffSubsetterContext::callType2Subr( bool bGlobal, int nSubrNumber)
     if( bGlobal ) {
         nSubrNumber += mnGlobalSubrBias;
         if (seekIndexData( mnGlobalSubrBase, nSubrNumber) < 0)
-            return;
+            return false;
     } else {
         nSubrNumber += mpCffLocal->mnLocalSubrBias;
         if (seekIndexData( mpCffLocal->mnLocalSubrBase, nSubrNumber) < 0)
-            return;
+            return false;
     }
 
     // The CFF specification limits subroutine call nesting to 10 levels;
     // deeper nesting would let cyclic subroutines recurse without bound.
     if( mnSubrDepth >= 10)
-        return;
+        return false;
     ++mnSubrDepth;
 
     while( mpReadPtr < mpReadEnd && mpWritePtr <= mpWriteEnd)
-        convertOneTypeOp();
+    {
+        if (!convertOneTypeOp())
+        {
+            --mnSubrDepth;
+            return false;
+        }
+    }
     --mnSubrDepth;
 
     mpReadPtr = pOldReadPtr;
     mpReadEnd = pOldReadEnd;
+    return true;
 }
 
 int CffSubsetterContext::convert2Type1Ops( CffLocal* pCffLocal, const U8* const pT2Ops, int nT2Len, U8* const pT1Ops, size_t nT1Cap)
@@ -1722,7 +1754,10 @@ int CffSubsetterContext::convert2Type1Ops( CffLocal* pCffLocal, const U8* const 
     mnHintSize=mnHorzHintSize=mnStackIdx=0; maCharWidth=-1;//#######
     mnCntrMask = 0;
     while( mpReadPtr < mpReadEnd && mpWritePtr <= mpWriteEnd)
-        convertOneTypeOp();
+    {
+        if (!convertOneTypeOp())
+            return -1;
+    }
     if( mpWritePtr > mpWriteEnd)
         return -1;
     if( maCharWidth != -1 )
@@ -1840,7 +1875,8 @@ RealType CffSubsetterContext::readRealVal()
 // prepare to access an element inside a CFF/CID index table
 int CffSubsetterContext::seekIndexData( int nIndexBase, int nDataIndex)
 {
-    assert( (nIndexBase > 0) && (mpBasePtr + nIndexBase + 3 <= mpBaseEnd));
+    if ( nIndexBase <= 0 || mpBasePtr + nIndexBase + 3 > mpBaseEnd)
+        return -1;
     if( nDataIndex < 0)
         return -1;
     mpReadPtr = mpBasePtr + nIndexBase;
@@ -1853,7 +1889,7 @@ int CffSubsetterContext::seekIndexData( int nIndexBase, int nDataIndex)
         return -1;
     int nOfs1 = 0;
     switch( nDataOfsSz) {
-        default: SAL_WARN("vcl.fonts", "\tINVALID nDataOfsSz=" << nDataOfsSz); return -1;
+        default: SAL_WARN("vcl.fonts.cff", "\tINVALID nDataOfsSz=" << nDataOfsSz); return -1;
         case 1: nOfs1 = mpReadPtr[0]; break;
         case 2: nOfs1 = (mpReadPtr[0]<<8) + mpReadPtr[1]; break;
         case 3: nOfs1 = (mpReadPtr[0]<<16) + (mpReadPtr[1]<<8) + mpReadPtr[2]; break;
@@ -1875,7 +1911,7 @@ int CffSubsetterContext::seekIndexData( int nIndexBase, int nDataIndex)
         return -1;
     mpReadPtr = mpBasePtr + (nIndexBase + 2) + nDataOfsSz * (nDataCount + 1) + nOfs1;
     mpReadEnd = mpReadPtr + (nOfs2 - nOfs1);
-    if (mpReadPtr > mpBaseEnd || mpReadEnd > mpBaseEnd)
+    if (nOfs1 < 0 || nOfs2 < nOfs1 || mpReadPtr > mpBaseEnd || mpReadEnd > mpBaseEnd)
         return -1;
     return (nOfs2 - nOfs1);
 }
@@ -1893,7 +1929,7 @@ bool CffSubsetterContext::seekIndexEnd( int nIndexBase)
         return false;
     int nEndOfs = 0;
     switch( nDataOfsSz) {
-        default: SAL_WARN("vcl.fonts", "\tINVALID nDataOfsSz=" << nDataOfsSz); return false;
+        default: SAL_WARN("vcl.fonts.cff", "\tINVALID nDataOfsSz=" << nDataOfsSz); return false;
         case 1: nEndOfs = mpReadPtr[0]; break;
         case 2: nEndOfs = (mpReadPtr[0]<<8) + mpReadPtr[1]; break;
         case 3: nEndOfs = (mpReadPtr[0]<<16) + (mpReadPtr[1]<<8) + mpReadPtr[2];break;
@@ -1967,9 +2003,13 @@ bool CffSubsetterContext::initialCffRead()
     const U8 nVerMinor = *(mpReadPtr++);
     const U8 nHeaderSize = *(mpReadPtr++);
     const U8 nOffsetSize = *(mpReadPtr++);
-    // TODO: is the version number useful for anything else?
-    assert( (nVerMajor == 1) && (nVerMinor == 0));
-    (void)(nVerMajor + nVerMinor + nOffsetSize); // avoid compiler warnings
+    if (nVerMajor != 1 || nVerMinor != 0)
+    {
+        SAL_WARN("vcl.fonts.cff", "Unsupported CFF version: " << int(nVerMajor) << "." << int(nVerMinor));
+        return false;
+    }
+    if (!nOffsetSize)
+        return false;
 
     // prepare access to the NameIndex
     mnNameIdxBase = nHeaderSize;
@@ -2023,7 +2063,7 @@ bool CffSubsetterContext::initialCffRead()
             return false;
         if (o3tl::make_unsigned(mnFDAryCount) >= SAL_N_ELEMENTS(maCffLocal))
         {
-            SAL_INFO("vcl.fonts", "CffSubsetterContext: too many CFF in font");
+            SAL_INFO("vcl.fonts.cff", "CffSubsetterContext: too many CFF in font");
             return false;
         }
 
@@ -2100,8 +2140,9 @@ OString CffSubsetterContext::getString( int nStringID)
 // access a CID's FDSelect table
 int CffSubsetterContext::getFDSelect( int nGlyphIndex) const
 {
-    assert( nGlyphIndex >= 0);
-    assert( nGlyphIndex < mnCharStrCount);
+    if ( nGlyphIndex < 0 || nGlyphIndex >= mnCharStrCount)
+        return -1;
+
     if( !mbCIDFont)
         return 0;
 
@@ -2133,11 +2174,10 @@ int CffSubsetterContext::getFDSelect( int nGlyphIndex) const
                 }
             } break;
         default:    // invalid FDselect format
-            SAL_WARN("vcl.fonts", "invalid CFF.FdselType=" << nFDSelFormat);
+            SAL_WARN("vcl.fonts.cff", "invalid CFF.FdselType=" << nFDSelFormat);
             break;
     }
 
-    assert( false);
     return -1;
 }
 
@@ -2178,7 +2218,7 @@ int CffSubsetterContext::getGlyphSID( int nGlyphIndex) const
             }
             break;
         default:
-            SAL_WARN("vcl.fonts", "ILLEGAL CFF-Charset format " << nCSetFormat);
+            SAL_WARN("vcl.fonts.cff", "ILLEGAL CFF-Charset format " << nCSetFormat);
             return -2;
     }
 
@@ -2421,7 +2461,7 @@ void Type1Emitter::emitValVector( const char* pLineHead, const char* pLineTail,
     maBuffer.append( pLineTail);
 }
 
-void CffSubsetterContext::convertCharStrings(const sal_GlyphId* pGlyphIds, int nGlyphCount,
+bool CffSubsetterContext::convertCharStrings(const sal_GlyphId* pGlyphIds, int nGlyphCount,
                                              std::vector<CharString>& rCharStrings)
 {
     // If we are doing extra glyphs used for seac operator, check for already
@@ -2431,7 +2471,8 @@ void CffSubsetterContext::convertCharStrings(const sal_GlyphId* pGlyphIds, int n
     for (int i = 0; i < nGlyphCount; ++i)
     {
         const int nCffGlyphId = pGlyphIds[i];
-        assert((nCffGlyphId >= 0) && (nCffGlyphId < mnCharStrCount));
+        if ((nCffGlyphId < 0) || (nCffGlyphId >= mnCharStrCount))
+            return false;
 
         if (!bCheckDuplicates)
         {
@@ -2445,7 +2486,7 @@ void CffSubsetterContext::convertCharStrings(const sal_GlyphId* pGlyphIds, int n
         // get privdict context matching to the glyph
         const int nFDSelect = getFDSelect(nCffGlyphId);
         if (nFDSelect < 0)
-            continue;
+            return false;
         mpCffLocal = &maCffLocal[nFDSelect];
 
         // convert the Type2op charstring to its Type1op counterpart
@@ -2462,9 +2503,10 @@ void CffSubsetterContext::convertCharStrings(const sal_GlyphId* pGlyphIds, int n
 
         rCharStrings.push_back(aCharString);
     }
+    return true;
 }
 
-void CffSubsetterContext::emitAsType1( Type1Emitter& rEmitter,
+bool CffSubsetterContext::emitAsType1( Type1Emitter& rEmitter,
     const sal_GlyphId* pReqGlyphIds, const U8* pReqEncoding,
     int nGlyphCount, FontSubsetInfo& rFSInfo)
 {
@@ -2690,14 +2732,16 @@ void CffSubsetterContext::emitAsType1( Type1Emitter& rEmitter,
     // emit the CharStrings for the requested glyphs
     std::vector<CharString> aCharStrings;
     mbDoSeac = true;
-    convertCharStrings(pReqGlyphIds, nGlyphCount, aCharStrings);
+    if (!convertCharStrings(pReqGlyphIds, nGlyphCount, aCharStrings))
+        return false;
 
     // The previous convertCharStrings might collect extra glyphs used in seac
     // operator, convert them as well
     if (!maExtraGlyphIds.empty())
     {
         mbDoSeac = false;
-        convertCharStrings(maExtraGlyphIds.data(), maExtraGlyphIds.size(), aCharStrings);
+        if (!convertCharStrings(maExtraGlyphIds.data(), maExtraGlyphIds.size(), aCharStrings))
+            return false;
     }
     rEmitter.maBuffer.append(
         "2 index /CharStrings " + OString::number(aCharStrings.size()) + " dict dup begin\n");
@@ -2750,7 +2794,7 @@ void CffSubsetterContext::emitAsType1( Type1Emitter& rEmitter,
     rFSInfo.m_nFontType = rEmitter.mbPfbSubset ? FontType::TYPE1_PFB : FontType::TYPE1_PFA;
 
     if (rFSInfo.m_bFilled)
-        return;
+        return true;
 
     rFSInfo.m_aFontBBox = { Point(static_cast<sal_Int32>(aFontBBox[0] * fXFactor),
                                   static_cast<sal_Int32>(aFontBBox[1] * fYFactor)),
@@ -2763,6 +2807,8 @@ void CffSubsetterContext::emitAsType1( Type1Emitter& rEmitter,
     rFSInfo.m_nCapHeight = rFSInfo.m_nAscent;           // for top-flat capital letters
 
     rFSInfo.m_aPSName   = OUString( rEmitter.maSubsetName, strlen(rEmitter.maSubsetName), RTL_TEXTENCODING_UTF8 );
+
+    return true;
 }
 
 bool FontSubsetInfo::CreateFontSubsetFromCff()
@@ -2777,9 +2823,12 @@ bool FontSubsetInfo::CreateFontSubsetFromCff()
     const bool bPfbSubset(mnReqFontTypeMask & FontType::TYPE1_PFB);
     Type1Emitter aType1Emitter( mpOutFile, bPfbSubset);
     aType1Emitter.setSubsetName( mpReqFontName);
-    aCff.emitAsType1( aType1Emitter,
+    if (!aCff.emitAsType1( aType1Emitter,
         mpReqGlyphIds, mpReqEncodedIds,
-        mnReqGlyphCount, *this);
+        mnReqGlyphCount, *this))
+    {
+        return false;
+    }
     return true;
 }
 
