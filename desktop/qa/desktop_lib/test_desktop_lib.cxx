@@ -174,6 +174,8 @@ public:
     void testCellCursor();
     void testCommandResult();
     void testWriterComments();
+    void testCommentAuthorFromSession();
+    void testCommentAuthorAnonymous();
     void testSheetOperations();
     void testSheetSelections();
     void testSheetDragDrop();
@@ -246,6 +248,8 @@ public:
     CPPUNIT_TEST(testCellCursor);
     CPPUNIT_TEST(testCommandResult);
     CPPUNIT_TEST(testWriterComments);
+    CPPUNIT_TEST(testCommentAuthorFromSession);
+    CPPUNIT_TEST(testCommentAuthorAnonymous);
     CPPUNIT_TEST(testSheetOperations);
     CPPUNIT_TEST(testSheetSelections);
     CPPUNIT_TEST(testSheetDragDrop);
@@ -1041,6 +1045,67 @@ void DesktopLOKTest::testWriterComments()
     auto xTextField = xTextPortion->getPropertyValue("TextField").get< uno::Reference<beans::XPropertySet> >();
     // This was empty, typed characters ended up in the body text.
     CPPUNIT_ASSERT_EQUAL(OUString("test"), xTextField->getPropertyValue("Content").get<OUString>());
+}
+
+void DesktopLOKTest::testCommentAuthorFromSession()
+{
+    LibLODocument_Impl* pDocument = loadDoc("blank_text.odt");
+    // The server provides "Jane Doe" as the author for this view.
+    pDocument->pClass->initializeForRendering(
+        pDocument, R"({".uno:Author":{"type":"string","value":"Jane Doe"}})");
+    pDocument->pClass->registerCallback(pDocument, &DesktopLOKTest::callback, this);
+    uno::Reference<awt::XReschedule> xToolkit = css::awt::Toolkit::create(comphelper::getProcessComponentContext());
+
+    TimeValue const aTimeValue = {2 , 0}; // 2 seconds max
+    m_aCommandResultCondition.reset();
+    // The InsertAnnotation command carries a different author than the session.
+    pDocument->pClass->postUnoCommand(pDocument, ".uno:InsertAnnotation",
+        R"({"Author":{"type":"string","value":"Other User"},"Html":{"type":"string","value":"test"}})", true);
+    Scheduler::ProcessEventsToIdle();
+    m_aCommandResultCondition.wait(aTimeValue);
+    CPPUNIT_ASSERT(!m_aCommandResult.isEmpty());
+    xToolkit->reschedule();
+
+    uno::Reference<text::XTextDocument> xTextDocument(mxComponent, uno::UNO_QUERY);
+    uno::Reference<container::XEnumerationAccess> xParagraphEnumerationAccess(xTextDocument->getText(), uno::UNO_QUERY);
+    uno::Reference<container::XEnumeration> xParagraphEnumeration = xParagraphEnumerationAccess->createEnumeration();
+    uno::Reference<container::XEnumerationAccess> xParagraph(xParagraphEnumeration->nextElement(), uno::UNO_QUERY);
+    uno::Reference<container::XEnumeration> xTextPortionEnumeration = xParagraph->createEnumeration();
+    uno::Reference<beans::XPropertySet> xTextPortion(xTextPortionEnumeration->nextElement(), uno::UNO_QUERY);
+    CPPUNIT_ASSERT_EQUAL(u"Annotation"_ustr, xTextPortion->getPropertyValue(u"TextPortionType"_ustr).get<OUString>());
+    auto xTextField = xTextPortion->getPropertyValue(u"TextField"_ustr).get< uno::Reference<beans::XPropertySet> >();
+    // The comment is attributed to the server-provided session identity, not the name the command carried.
+    CPPUNIT_ASSERT_EQUAL(u"Jane Doe"_ustr, xTextField->getPropertyValue(u"Author"_ustr).get<OUString>());
+}
+
+void DesktopLOKTest::testCommentAuthorAnonymous()
+{
+    LibLODocument_Impl* pDocument = loadDoc("blank_text.odt");
+    // An anonymous session sends no .uno:Author, so the view has no server-provided author.
+    pDocument->pClass->initializeForRendering(pDocument, nullptr);
+    pDocument->pClass->registerCallback(pDocument, &DesktopLOKTest::callback, this);
+    uno::Reference<awt::XReschedule> xToolkit = css::awt::Toolkit::create(comphelper::getProcessComponentContext());
+
+    TimeValue const aTimeValue = {2 , 0}; // 2 seconds max
+    m_aCommandResultCondition.reset();
+    pDocument->pClass->postUnoCommand(pDocument, ".uno:InsertAnnotation",
+        R"({"Author":{"type":"string","value":"Other User"},"Html":{"type":"string","value":"test"}})", true);
+    Scheduler::ProcessEventsToIdle();
+    m_aCommandResultCondition.wait(aTimeValue);
+    CPPUNIT_ASSERT(!m_aCommandResult.isEmpty());
+    xToolkit->reschedule();
+
+    uno::Reference<text::XTextDocument> xTextDocument(mxComponent, uno::UNO_QUERY);
+    uno::Reference<container::XEnumerationAccess> xParagraphEnumerationAccess(xTextDocument->getText(), uno::UNO_QUERY);
+    uno::Reference<container::XEnumeration> xParagraphEnumeration = xParagraphEnumerationAccess->createEnumeration();
+    uno::Reference<container::XEnumerationAccess> xParagraph(xParagraphEnumeration->nextElement(), uno::UNO_QUERY);
+    uno::Reference<container::XEnumeration> xTextPortionEnumeration = xParagraph->createEnumeration();
+    uno::Reference<beans::XPropertySet> xTextPortion(xTextPortionEnumeration->nextElement(), uno::UNO_QUERY);
+    CPPUNIT_ASSERT_EQUAL(u"Annotation"_ustr, xTextPortion->getPropertyValue(u"TextPortionType"_ustr).get<OUString>());
+    auto xTextField = xTextPortion->getPropertyValue(u"TextField"_ustr).get< uno::Reference<beans::XPropertySet> >();
+    // With no server-provided identity the comment gets a blank author: not the
+    // name the command carried, and not the shared module author either.
+    CPPUNIT_ASSERT_EQUAL(OUString(), xTextField->getPropertyValue(u"Author"_ustr).get<OUString>());
 }
 
 void DesktopLOKTest::testSheetOperations()

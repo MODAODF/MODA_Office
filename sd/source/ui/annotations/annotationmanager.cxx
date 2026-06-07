@@ -523,7 +523,7 @@ void AnnotationManagerImpl::InsertAnnotation(const OUString& rText)
 
     OUString sAuthor;
     if (comphelper::LibreOfficeKit::isActive())
-        sAuthor = mrBase.GetMainViewShell()->GetView()->GetAuthor();
+        sAuthor = mrBase.GetLOKAuthor();
     else
     {
         SvtUserOptions aUserOptions;
@@ -641,7 +641,7 @@ void AnnotationManagerImpl::ExecuteReplyToAnnotation( SfxRequest const & rReq )
 
     OUString sReplyAuthor;
     if (comphelper::LibreOfficeKit::isActive())
-        sReplyAuthor = mrBase.GetMainViewShell()->GetView()->GetAuthor();
+        sReplyAuthor = mrBase.GetLOKAuthor();
     else
     {
         SvtUserOptions aUserOptions;

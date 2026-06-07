@@ -4780,10 +4780,12 @@ CPPUNIT_TEST_FIXTURE(SdTiledRenderingTest, testInsertSignatureLineExternal)
     createTempCopy(u"empty.pdf");
     loadWithParams(maTempFile.GetURL(), aArgs);
     SdXImpressDocument* pImpressDocument = dynamic_cast<SdXImpressDocument*>(mxComponent.get());
-    pImpressDocument->initializeForTiledRendering({});
+    uno::Sequence<beans::PropertyValue> aRenderArgs{
+        comphelper::makePropertyValue(".uno:Author", OUString("myauthor"))
+    };
+    pImpressDocument->initializeForTiledRendering(aRenderArgs);
     sd::ViewShell* pViewShell = pImpressDocument->GetDocShell()->GetViewShell();
     sd::View* pView = pViewShell->GetView();
-    pView->SetAuthor("myauthor");
     ViewCallback aView;
 
     // When insrerting a signature line for electronic (extrenal) signing:

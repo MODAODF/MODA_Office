@@ -181,6 +181,7 @@ friend class SfxPrinterController;
     rtl::Reference<LOKDocumentFocusListener>   mpLOKDocumentFocusListener;
     std::unordered_set<OUString>    mvLOKBlockedCommandList;
     OUString maLOKTimezone;
+    OUString maLOKAuthor;
     bool maLOKIsTimezoneSet;
 
     /// Used to set the DocId at construction time. See SetCurrentDocId.
@@ -470,6 +471,12 @@ public:
         maLOKIsTimezoneSet = isSet;
         maLOKTimezone = rTimezone;
     }
+
+    /// The server-provided author name supplied by the client when this view
+    /// was initialized. Empty when the client supplied none.
+    const OUString& GetLOKAuthor() const { return maLOKAuthor; }
+    /// Set the server-provided author name of this view.
+    void SetLOKAuthor(const OUString& rAuthor) { maLOKAuthor = rAuthor; }
 
     /// Set the LibreOfficeKit locale of this view.
     void SetLOKLocale(const OUString& rBcp47LanguageTag);

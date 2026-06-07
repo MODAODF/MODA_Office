@@ -5395,6 +5395,22 @@ static void doc_postUnoCommand(LibreOfficeKitDocument* pThis, const char* pComma
     if (nView < 0)
         return;
 
+    // These commands pre-existed online mode and have Author fields. Strip any
+    // incoming Authors and set the server-provided identity recorded when the
+    // view was initialized.
+    if (aCommand == ".uno:InsertAnnotation" ||
+        aCommand == ".uno:InsertThreadedComment" ||
+        aCommand == ".uno:EditAnnotation")
+    {
+        std::erase_if(aPropertyValuesVector,
+                      [](const beans::PropertyValue& rPropValue) { return rPropValue.Name == "Author"; });
+        beans::PropertyValue aAuthor;
+        aAuthor.Name = "Author";
+        SfxViewShell* pViewShell = SfxViewShell::Current();
+        aAuthor.Value <<= pViewShell ? pViewShell->GetLOKAuthor() : OUString();
+        aPropertyValuesVector.push_back(aAuthor);
+    }
+
     if (gImpl && aCommand == ".uno:ToggleOrientation")
     {
         ExecuteOrientationChange();
