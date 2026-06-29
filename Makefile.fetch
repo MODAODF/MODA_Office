@@ -241,6 +241,9 @@ $(WORKDIR)/download: $(BUILDDIR)/config_$(gb_Side).mk $(SRCDIR)/download.lst $(S
 		$(call fetch_Optional,ODFVALIDATOR,ODFVALIDATOR_JAR) \
 		$(call fetch_Optional,OFFICEOTRON,OFFICEOTRON_JAR) \
 	,$(call fetch_Download_item,https://dev-www.libreoffice.org/extern,$(item)))
+        $(foreach item, \
+                PYTHON_TARBALL \
+        ,$(call fetch_Download_item,https://www.python.org/ftp/python/$(PYTHON_DOWNLOAD_VERSION)/$(PYTHON_TARBALL),$(item)))
 	$(foreach item, \
 		SUBSCRIPTION_OXT_TARBALL \
 	,$(call fetch_Download_item,https://github.com/MODAODF/Subscription/releases/download/$(SUBSCRIPTION_OXT_MICRO),$(item)))
