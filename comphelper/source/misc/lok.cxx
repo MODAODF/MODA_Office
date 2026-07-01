@@ -16,6 +16,7 @@
 #include <sal/log.hxx>
 
 #include <iostream>
+#include <limits.h>
 
 using namespace com::sun::star;
 
