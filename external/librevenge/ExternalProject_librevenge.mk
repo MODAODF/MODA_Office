@@ -22,7 +22,7 @@ $(eval $(call gb_ExternalProject_use_externals,librevenge,\
 $(call gb_ExternalProject_get_state_target,librevenge,build) :
 	$(call gb_Trace_StartRange,librevenge,EXTERNAL)
 	$(call gb_ExternalProject_run,build,\
-		export PKG_CONFIG="" \
+		export PKG_CONFIG=true \
 		&& $(gb_RUN_CONFIGURE) ./configure \
 			--with-pic \
 			$(if $(DISABLE_DYNLOADING), \
@@ -31,6 +31,7 @@ $(call gb_ExternalProject_get_state_target,librevenge,build) :
 			$(if $(ENABLE_DEBUG),--enable-debug,--disable-debug) \
 			--disable-werror \
 			--disable-weffc \
+			--disable-tests \
 			--disable-streams \
 			--disable-generators \
 			--without-docs \
