@@ -34,6 +34,9 @@ $(eval $(call gb_UnpackedTarball_add_patches,python3,\
 	external/python3/macos-11.patch.0 \
 	external/python3/tsan.patch.0 \
 	external/python3/init-sys-streams-cant-initialize-stdin.patch.0 \
+	external/python3/CVE-2026-3087.patch.0 \
+	external/python3/CVE-2026-3644.patch.0 \
+	external/python3/CVE-2026-4224.patch.0 \
 ))
 
 ifneq ($(filter DRAGONFLY FREEBSD LINUX NETBSD OPENBSD SOLARIS,$(OS)),)
