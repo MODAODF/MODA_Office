@@ -1,206 +1,55 @@
 --- configure
 +++ configure
-@@ -21906,14 +21906,14 @@
-   printf "%s\n" "#define HAVE_ZLIB_H 1" >>confdefs.h
+@@ -12333,13 +12333,13 @@
+ 	;;
+ esac
  
-       py_check_lib_save_LIBS=$LIBS
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gzread in -lz" >&5
--printf %s "checking for gzread in -lz... " >&6; }
--if test ${ac_cv_lib_z_gzread+y}
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gzread in -lzlib" >&5
-+printf %s "checking for gzread in -lzlib... " >&6; }
-+if test ${ac_cv_lib_zlib_gzread+y}
- then :
-   printf %s "(cached) " >&6
- else case e in #(
-   e) ac_check_lib_save_LIBS=$LIBS
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for inflateCopy in -lz" >&5
+-$as_echo_n "checking for inflateCopy in -lz... " >&6; }
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for inflateCopy in -lzlib" >&5
++$as_echo_n "checking for inflateCopy in -lzlib... " >&6; }
+ if ${ac_cv_lib_z_inflateCopy+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
 -LIBS="-lz  $LIBS"
 +LIBS="-lzlib  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  
-@@ -21937,9 +21937,9 @@
- _ACEOF
- if ac_fn_c_try_link "$LINENO"
- then :
--  ac_cv_lib_z_gzread=yes
--else case e in #(
--  e) ac_cv_lib_z_gzread=no ;;
-+  ac_cv_lib_zlib_gzread=yes
-+else case e in #(
-+  e) ac_cv_lib_zlib_gzread=no ;;
- esac
- fi
- rm -f core conftest.err conftest.$ac_objext conftest.beam \
-@@ -21947,9 +21947,9 @@
- LIBS=$ac_check_lib_save_LIBS ;;
- esac
- fi
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_z_gzread" >&5
--printf "%s\n" "$ac_cv_lib_z_gzread" >&6; }
--if test "x$ac_cv_lib_z_gzread" = xyes
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_zlib_gzread" >&5
-+printf "%s\n" "$ac_cv_lib_zlib_gzread" >&6; }
-+if test "x$ac_cv_lib_zlib_gzread" = xyes
- then :
-   have_zlib=yes
- else case e in #(
-@@ -21970,16 +21970,16 @@
- then :
- 
-       ZLIB_CFLAGS=${ZLIB_CFLAGS-""}
--      ZLIB_LIBS=${ZLIB_LIBS-"-lz"}
-+      ZLIB_LIBS=${ZLIB_LIBS-"-lzlib"}
-       py_check_lib_save_LIBS=$LIBS
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for inflateCopy in -lz" >&5
--printf %s "checking for inflateCopy in -lz... " >&6; }
--if test ${ac_cv_lib_z_inflateCopy+y}
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for inflateCopy in -lzlib" >&5
-+printf %s "checking for inflateCopy in -lzlib... " >&6; }
-+if test ${ac_cv_lib_zlib_inflateCopy+y}
- then :
-   printf %s "(cached) " >&6
- else case e in #(
-   e) ac_check_lib_save_LIBS=$LIBS
--LIBS="-lz  $LIBS"
-+LIBS="-lzlib  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -22003,9 +22003,9 @@
- _ACEOF
- if ac_fn_c_try_link "$LINENO"
- then :
--  ac_cv_lib_z_inflateCopy=yes
--else case e in #(
--  e) ac_cv_lib_z_inflateCopy=no ;;
-+  ac_cv_lib_zlib_inflateCopy=yes
-+else case e in #(
-+  e) ac_cv_lib_zlib_inflateCopy=no ;;
- esac
- fi
- rm -f core conftest.err conftest.$ac_objext conftest.beam \
-@@ -22013,9 +22013,9 @@
- LIBS=$ac_check_lib_save_LIBS ;;
- esac
- fi
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_z_inflateCopy" >&5
--printf "%s\n" "$ac_cv_lib_z_inflateCopy" >&6; }
--if test "x$ac_cv_lib_z_inflateCopy" = xyes
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_zlib_inflateCopy" >&5
-+printf "%s\n" "$ac_cv_lib_zlib_inflateCopy" >&6; }
-+if test "x$ac_cv_lib_zlib_inflateCopy" = xyes
- then :
-   printf "%s\n" "#define HAVE_ZLIB_COPY 1" >>confdefs.h
- 
-@@ -22053,14 +22053,14 @@
-   printf "%s\n" "#define HAVE_ZLIB_H 1" >>confdefs.h
- 
-       py_check_lib_save_LIBS=$LIBS
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gzread in -lz" >&5
--printf %s "checking for gzread in -lz... " >&6; }
--if test ${ac_cv_lib_z_gzread+y}
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gzread in -lzlib" >&5
-+printf %s "checking for gzread in -lzlib... " >&6; }
-+if test ${ac_cv_lib_zlib_gzread+y}
- then :
-   printf %s "(cached) " >&6
- else case e in #(
-   e) ac_check_lib_save_LIBS=$LIBS
--LIBS="-lz  $LIBS"
-+LIBS="-lzlib  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -22084,9 +22084,9 @@
- _ACEOF
- if ac_fn_c_try_link "$LINENO"
- then :
--  ac_cv_lib_z_gzread=yes
--else case e in #(
--  e) ac_cv_lib_z_gzread=no ;;
-+  ac_cv_lib_zlib_gzread=yes
-+else case e in #(
-+  e) ac_cv_lib_zlib_gzread=no ;;
- esac
- fi
- rm -f core conftest.err conftest.$ac_objext conftest.beam \
-@@ -22094,9 +22094,9 @@
- LIBS=$ac_check_lib_save_LIBS ;;
- esac
- fi
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_z_gzread" >&5
--printf "%s\n" "$ac_cv_lib_z_gzread" >&6; }
--if test "x$ac_cv_lib_z_gzread" = xyes
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_zlib_gzread" >&5
-+printf "%s\n" "$ac_cv_lib_zlib_gzread" >&6; }
-+if test "x$ac_cv_lib_zlib_gzread" = xyes
- then :
-   have_zlib=yes
- else case e in #(
-@@ -22117,16 +22117,16 @@
- then :
- 
-       ZLIB_CFLAGS=${ZLIB_CFLAGS-""}
--      ZLIB_LIBS=${ZLIB_LIBS-"-lz"}
-+      ZLIB_LIBS=${ZLIB_LIBS-"-lzlib"}
-       py_check_lib_save_LIBS=$LIBS
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for inflateCopy in -lz" >&5
--printf %s "checking for inflateCopy in -lz... " >&6; }
--if test ${ac_cv_lib_z_inflateCopy+y}
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for inflateCopy in -lzlib" >&5
-+printf %s "checking for inflateCopy in -lzlib... " >&6; }
-+if test ${ac_cv_lib_zlib_inflateCopy+y}
- then :
-   printf %s "(cached) " >&6
- else case e in #(
-   e) ac_check_lib_save_LIBS=$LIBS
--LIBS="-lz  $LIBS"
-+LIBS="-lzlib  $LIBS"
- cat confdefs.h - <<_ACEOF >conftest.$ac_ext
- /* end confdefs.h.  */
- 
-@@ -22150,9 +22150,9 @@
- _ACEOF
- if ac_fn_c_try_link "$LINENO"
- then :
--  ac_cv_lib_z_inflateCopy=yes
--else case e in #(
--  e) ac_cv_lib_z_inflateCopy=no ;;
-+  ac_cv_lib_zlib_inflateCopy=yes
-+else case e in #(
-+  e) ac_cv_lib_zlib_inflateCopy=no ;;
- esac
- fi
- rm -f core conftest.err conftest.$ac_objext conftest.beam \
-@@ -22160,9 +22160,9 @@
- LIBS=$ac_check_lib_save_LIBS ;;
- esac
- fi
--{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_z_inflateCopy" >&5
--printf "%s\n" "$ac_cv_lib_z_inflateCopy" >&6; }
--if test "x$ac_cv_lib_z_inflateCopy" = xyes
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_zlib_inflateCopy" >&5
-+printf "%s\n" "$ac_cv_lib_zlib_inflateCopy" >&6; }
-+if test "x$ac_cv_lib_zlib_inflateCopy" = xyes
- then :
-   printf "%s\n" "#define HAVE_ZLIB_COPY 1" >>confdefs.h
- 
---- configure.ac
-+++ configure.ac
-@@ -5469,12 +5469,12 @@
-     CPPFLAGS="$CPPFLAGS $ZLIB_CFLAGS"
-     LIBS="$LIBS $ZLIB_LIBS"
-     AC_CHECK_HEADERS([zlib.h], [
--      PY_CHECK_LIB([z], [gzread], [have_zlib=yes], [have_zlib=no])
-+      PY_CHECK_LIB([zlib], [gzread], [have_zlib=yes], [have_zlib=no])
-     ], [have_zlib=no])
-     AS_VAR_IF([have_zlib], [yes], [
-       ZLIB_CFLAGS=${ZLIB_CFLAGS-""}
--      ZLIB_LIBS=${ZLIB_LIBS-"-lz"}
--      PY_CHECK_LIB([z], [inflateCopy], [AC_DEFINE([HAVE_ZLIB_COPY], [1])])
-+      ZLIB_LIBS=${ZLIB_LIBS-"-lzlib"}
-+      PY_CHECK_LIB([zlib], [inflateCopy], [AC_DEFINE([HAVE_ZLIB_COPY], [1])])
-     ])
-   ])
- ])
+--- setup.py
++++ setup.py
+@@ -1483,7 +1483,7 @@
+         #
+         # You can upgrade zlib to version 1.1.4 yourself by going to
+         # http://www.gzip.org/zlib/
+-        zlib_inc = find_file('zlib.h', [], self.inc_dirs)
++        zlib_inc = [os.environ.get('ZLIB_INCDIR')]
+         have_zlib = False
+         if zlib_inc is not None:
+             zlib_h = zlib_inc[0] + '/zlib.h'
+@@ -1500,13 +1500,13 @@
+                         version = line.split()[2]
+                         break
+             if version >= version_req:
+-                if (self.compiler.find_library_file(self.lib_dirs, 'z')):
++                if (self.compiler.find_library_file(self.lib_dirs, 'zlib')):
+                     if MACOS:
+                         zlib_extra_link_args = ('-Wl,-search_paths_first',)
+                     else:
+                         zlib_extra_link_args = ()
+                     self.add(Extension('zlib', ['zlibmodule.c'],
+-                                       libraries=['z'],
++                                       libraries=['zlib'],
+                                        extra_link_args=zlib_extra_link_args))
+                     have_zlib = True
+                 else:
+@@ -1520,7 +1520,7 @@
+         # crc32 if we have it.  Otherwise binascii uses its own.
+         if have_zlib:
+             extra_compile_args = ['-DUSE_ZLIB_CRC32']
+-            libraries = ['z']
++            libraries = ['zlib']
+             extra_link_args = zlib_extra_link_args
+         else:
+             extra_compile_args = []

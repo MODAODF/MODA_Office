@@ -1,10 +1,10 @@
---- Python/ceval_gil.c
-+++ Python/ceval_gil.c
-@@ -193,6 +193,7 @@
- #ifdef HAVE_FORK
+--- Python/ceval_gil.h
++++ Python/ceval_gil.h
+@@ -135,6 +135,7 @@
+ 
  static void recreate_gil(struct _gil_runtime_state *gil)
  {
-+    _Py_ANNOTATE_RWLOCK_RELEASED(&gil->locked, /*is_write=*/1);
++    _Py_ANNOTATE_RWLOCK_RELEASED(&gil->locked, 1);
      _Py_ANNOTATE_RWLOCK_DESTROY(&gil->locked);
      /* XXX should we destroy the old OS resources here? */
      create_gil(gil);

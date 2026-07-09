@@ -1,8 +1,8 @@
---- Python/pylifecycle.c
-+++ Python/pylifecycle.c
-@@ -2638,6 +2638,20 @@
+--- Python/pylifecycle.c	2024-03-27 14:34:43.905367358 +0000
++++ Python/pylifecycle.c	2024-03-27 14:40:16.339134322 +0000
+@@ -1789,6 +1789,20 @@
+     if (!is_valid_fd(fd))
          Py_RETURN_NONE;
-     }
  
 +    /* Check that stdin, etc is not a directory
 +       Using shell redirection, you can redirect stdin to a directory,
@@ -21,11 +21,10 @@
      /* stdin is always opened in buffered mode, first because it shouldn't
         make a difference in common use cases, second because TextIOWrapper
         depends on the presence of a read1() method which only exists on
-@@ -2805,19 +2819,6 @@
-     PyObject * encoding_attr;
+@@ -1971,19 +1971,6 @@
      PyStatus res = _PyStatus_OK();
      const PyConfig *config = _PyInterpreterState_GetConfig(tstate->interp);
--
+ 
 -    /* Check that stdin is not a directory
 -       Using shell redirection, you can redirect stdin to a directory,
 -       crashing the Python interpreter. Catch this common mistake here
@@ -38,6 +37,7 @@
 -        return _PyStatus_ERR("<stdin> is a directory, cannot continue");
 -    }
 -#endif
- 
-     if (!(iomod = PyImport_ImportModule("_io"))) {
-         goto error;
+-
+     /* Hack to avoid a nasty recursion issue when Python is invoked
+        in verbose mode: pre-import the Latin-1 and UTF-8 codecs */
+     if ((m = PyImport_ImportModule("encodings.utf_8")) == NULL) {
