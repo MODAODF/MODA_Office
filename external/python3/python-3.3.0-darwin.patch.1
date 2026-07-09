@@ -5,7 +5,7 @@ LO needs to build both against MacOSX SDK and not produce universal binaries.
 diff -ru python3.orig/configure python3/configure
 --- python3.orig/configure	2015-07-26 17:36:11.808497783 +0200
 +++ python3/configure	2015-07-26 17:38:49.016508337 +0200
-@@ -10778,10 +10778,24 @@
+@@ -7385,7 +7385,20 @@
          then
              case "$UNIVERSAL_ARCHS" in
              32-bit)
@@ -15,11 +15,9 @@ diff -ru python3.orig/configure python3/configure
 +           case `/usr/bin/arch` in
 +           i386)
 +               UNIVERSAL_ARCH_FLAGS="-arch i386"
-+               ARCH_TRIPLES=i386-apple-darwin
 +               ;;
 +           ppc)
 +               UNIVERSAL_ARCH_FLAGS=""
-+               ARCH_TRIPLES=ppc-apple-darwin
 +               ;;
 +           *)
 +               as_fn_error $? "Unexpected output of 'arch' on OSX" "$LINENO" 5
@@ -28,10 +26,7 @@ diff -ru python3.orig/configure python3/configure
 +
                 LIPO_32BIT_FLAGS=""
                 ARCH_RUN_32BIT=""
--               ARCH_TRIPLES=`echo {ppc,i386}-apple-darwin`
                 ;;
-             64-bit)
-                UNIVERSAL_ARCH_FLAGS="-arch ppc64 -arch x86_64"
 diff -ru python3.orig/Mac/Makefile.in python3/Mac/Makefile.in
 --- python3.orig/Mac/Makefile.in	2015-07-05 18:50:07.000000000 +0200
 +++ python3/Mac/Makefile.in	2015-07-26 17:40:14.860514100 +0200
@@ -47,24 +42,24 @@ diff -ru python3.orig/Mac/Makefile.in python3/Mac/Makefile.in
 diff -ru python3.orig/Mac/Resources/app/Info.plist.in python3/Mac/Resources/app/Info.plist.in
 --- python3.orig/Mac/Resources/app/Info.plist.in	2015-07-05 18:50:07.000000000 +0200
 +++ python3/Mac/Resources/app/Info.plist.in	2015-07-26 17:42:00.974521224 +0200
-@@ -13,7 +13,7 @@
- 	<key>CFBundleSignature</key>
- 	<string>PytX</string>
+@@ -18,7 +18,7 @@
+ 		</dict>
+ 	</array>
  	<key>CFBundleExecutable</key>
 -	<string>Python</string>
 +	<string>LibreOfficePython</string>
- 	<key>CFBundleIconFile</key>
- 	<string>PythonInterpreter.icns</string>
- 	<key>CFBundleInfoDictionaryVersion</key>
+ 	<key>CFBundleGetInfoString</key>
+ 	<string>%version%, (c) 2001-2023 Python Software Foundation.</string>
+ 	<key>CFBundleHelpBookFolder</key>
 diff -ru python3.orig/Mac/Resources/framework/Info.plist.in python3/Mac/Resources/framework/Info.plist.in
 --- python3.orig/Mac/Resources/framework/Info.plist.in	2015-07-05 18:50:07.000000000 +0200
 +++ python3/Mac/Resources/framework/Info.plist.in	2015-07-26 17:41:15.996518204 +0200
-@@ -13,7 +13,7 @@
- 	<key>CFBundleSignature</key>
- 	<string>????</string>
+@@ -5,7 +5,7 @@
+ 	<key>CFBundleDevelopmentRegion</key>
+ 	<string>English</string>
  	<key>CFBundleExecutable</key>
 -	<string>Python</string>
 +	<string>@PYTHONFRAMEWORK@</string>
- 	<key>CFBundleInfoDictionaryVersion</key>
- 	<string>6.0</string>
- 	<key>CFBundleShortVersionString</key>
+ 	<key>CFBundleGetInfoString</key>
+ 	<string>Python Runtime and Library</string>
+ 	<key>CFBundleIdentifier</key>
