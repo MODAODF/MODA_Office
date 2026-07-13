@@ -22,7 +22,7 @@ $(eval $(call gb_ExternalProject_use_externals,libstaroffice,\
 $(call gb_ExternalProject_get_state_target,libstaroffice,build) :
 	$(call gb_Trace_StartRange,libstaroffice,EXTERNAL)
 	$(call gb_ExternalProject_run,build,\
-		export PKG_CONFIG="" \
+		export PKG_CONFIG=true \
 		&& $(gb_RUN_CONFIGURE) ./configure \
 			--with-pic \
 			$(if $(DISABLE_DYNLOADING), \
