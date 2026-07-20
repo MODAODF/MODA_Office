@@ -7,6 +7,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+#include <cstdint>
 #include <comphelper/string.hxx>
 #include <frozen/bits/defines.h>
 #include <frozen/bits/elsa_std.h>

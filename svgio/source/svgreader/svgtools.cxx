@@ -26,6 +26,7 @@
 #include <basegfx/matrix/b2dhommatrixtools.hxx>
 #include <basegfx/matrix/b3dhommatrix.hxx>
 #include <svgtoken.hxx>
+#include <cstdint>
 #include <frozen/bits/defines.h>
 #include <frozen/bits/elsa_std.h>
 #include <frozen/unordered_map.h>
